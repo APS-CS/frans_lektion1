@@ -22,3 +22,12 @@ print(order[-2:])
 print(order[::2])
 
 #uppgift 3
+film_lista = ["Inception", "The Matrix", "Interstellar", "The Prestige"]
+
+if len(film_lista) > 1:
+    film_lista.append ("Memento")
+    print(film_lista)
+
+    if "The Matrix" in film_lista:
+        film_lista [1] = "Lord of the Rings"
+        print(film_lista)
