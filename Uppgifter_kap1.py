@@ -1,6 +1,6 @@
 #4
 name = "Amos"
-age = 38
+age = 18
 temp = 9.8
 is_student = True
 
