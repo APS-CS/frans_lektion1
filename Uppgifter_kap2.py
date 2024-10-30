@@ -43,6 +43,14 @@
 
 
 ##uppgift 4##
+
+# for key, value in data.items():
+#     print("key:")
+#     print(key)
+#     print("value:")
+#     print(value)
+#     print(" ")
+
 data = {
 "studenter": [
 ("Alice", {"ålder": 25, "ämnen": ("Matematik", "Fysik"), "aktiv": True}),
@@ -61,9 +69,6 @@ True}),
 
 #Extrahera en tuple med namn på alla aktiva studenter (de vars "aktiv"-status är True).
 
-#aktiv == True
-#print(type(data)) #dict
-
-# print(data.items()) #allt kommer fram!
-# print(data.get("studenter"))
-
+for x in data["studenter"]:
+    if x[1]["aktiv"] == True:
+        print("Ok")
