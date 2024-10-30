@@ -119,9 +119,9 @@
 
 ##dictionaries är mutable ##
 
-# empty_dict = {}
+empty_dict = {}
 
-# person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
+person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
 
 # print(person["name"])
 # print(person.get("name"))
@@ -130,7 +130,7 @@
 # person["age"] = 26
 # print(person)
 
-# person["profession"] = "Hacker" ##Lägger till en nyckel och värde i dictionarien
+person["profession"] = "Hacker" ##Lägger till en nyckel och värde i dictionarien
 # print(person)
 
 # age = person.pop("age")
@@ -138,11 +138,11 @@
 # print(person)
 
 # person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
-# # del person["name"]
-# # print(person)
-
-# person["profession"] = "Hacker" 
+# del person["name"]
 # print(person)
+
+person["profession"] = "Hacker" 
+print(person)
 
 # key, value = person.popitem()
 # print(key, value)
