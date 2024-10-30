@@ -28,7 +28,15 @@ if len(film_lista) > 1:
     film_lista.append ("Memento")
     print(film_lista)
 
-    if "The Matrix" in film_lista:
-        # film_lista = film_lista.replace("The Matrix", "Lord of the Rings")
-        film_lista(["The Matrix"]) = "Lord of the Rings"
-        print(film_lista)
+    for replacement in range(len(film_lista)):
+        if film_lista[replacement] == "The Matrix":
+            film_lista[replacement] = "The Lord of the Rings"
+            print(film_lista)
+
+if "The Prestige" in film_lista:
+    film_lista.remove("The Prestige")
+    print(film_lista)
+
+if "The Dark Knight" != film_lista[2]:
+    film_lista.insert(2, "The Dark Knight")
+    print(film_lista)

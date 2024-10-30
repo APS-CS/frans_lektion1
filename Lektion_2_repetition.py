@@ -208,11 +208,11 @@
 
 # empty_set = set()
 
-fruits = {"apple", "banana", "cherry", "apple"}
+# fruits = {"apple", "banana", "cherry", "apple"}
 # print(fruits)
 # print(fruits[0]) ## Funkar ej med sets
 
-fruits.add("grape")
+# fruits.add("grape")
 # print(fruits)
 
 # fruits.update(["orange", "mango"])
@@ -227,8 +227,8 @@ fruits.add("grape")
 # fruits.clear()
 # print(fruits)
 
-set1 = {1,2,3}
-set2 = {3,4,5}
+# set1 = {1,2,3}
+# set2 = {3,4,5}
 
 # union_set = set1 | set2
 # union_set = set1.union(set2) #ger samma som ovan
