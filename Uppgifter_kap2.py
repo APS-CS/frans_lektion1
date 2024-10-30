@@ -29,5 +29,6 @@ if len(film_lista) > 1:
     print(film_lista)
 
     if "The Matrix" in film_lista:
-        film_lista [1] = "Lord of the Rings"
+        # film_lista = film_lista.replace("The Matrix", "Lord of the Rings")
+        film_lista(["The Matrix"]) = "Lord of the Rings"
         print(film_lista)
