@@ -68,7 +68,11 @@ True}),
 }
 
 #Extrahera en tuple med namn på alla aktiva studenter (de vars "aktiv"-status är True).
+namnlista = []
 
-for x in data["studenter"]:
-    if x[1]["aktiv"] == True:
-        print("Ok")
+for aktiv_student in data["studenter"]:
+    if aktiv_student[1]["aktiv"] == True:
+        namnlista.append((aktiv_student[0]))
+
+tuple_namnlista = tuple(namnlista)    
+print(tuple_namnlista, type(tuple_namnlista))
