@@ -130,7 +130,7 @@ person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
 # person["age"] = 26
 # print(person)
 
-person["profession"] = "Hacker" ##Lägger till en nyckel och värde i dictionarien
+# person["profession"] = "Hacker" ##Lägger till en nyckel och värde i dictionarien
 # print(person)
 
 # age = person.pop("age")
@@ -141,12 +141,12 @@ person["profession"] = "Hacker" ##Lägger till en nyckel och värde i dictionari
 # del person["name"]
 # print(person)
 
-person["profession"] = "Hacker" 
-print(person)
-
-# key, value = person.popitem()
-# print(key, value)
+# person["profession"] = "Hacker" 
 # print(person)
+
+key, value = person.popitem()
+print(key, value)
+print(person)
 
 # person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
 

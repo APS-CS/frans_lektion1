@@ -28,10 +28,10 @@
 #     film_lista.append ("Memento")
 #     #print(film_lista)
 
-#     for replacement in range(len(film_lista)):
-#         if film_lista[replacement] == "The Matrix":
-#             film_lista[replacement] = "The Lord of the Rings"
-#             #print(film_lista)
+# for replacement in range(len(film_lista)):
+#     if film_lista[replacement] == "The Matrix":
+#         film_lista[replacement] = "The Lord of the Rings"
+#         #print(film_lista)
 
 # if "The Prestige" in film_lista:
 #     film_lista.remove("The Prestige")
@@ -41,7 +41,8 @@
 #     film_lista.insert(2, "The Dark Knight")
 #     print(film_lista)
 
-#uppgift 4
+
+##uppgift 4##
 data = {
 "studenter": [
 ("Alice", {"ålder": 25, "ämnen": ("Matematik", "Fysik"), "aktiv": True}),
@@ -61,7 +62,8 @@ True}),
 #Extrahera en tuple med namn på alla aktiva studenter (de vars "aktiv"-status är True).
 
 #aktiv == True
+#print(type(data)) #dict
 
-for (tuple_aktiva) in range (len(data["studenter"])):
-    if (["aktiv"]==True):
-        print(data)
+# print(data.items()) #allt kommer fram!
+# print(data.get("studenter"))
+
