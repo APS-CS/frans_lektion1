@@ -21,21 +21,21 @@
 #X = "Hej"
 #print(x)
 
-#a = 10
-#b = 5
-#summa = a + b
-#differens = a - b
-#produkt = a*b
-#kvot = a / b
-#heltalskvot = a // b
-#modelus = b % a
+a = 10
+b = 5
+summa = a + b
+differens = a - b
+produkt = a*b
+kvot = a / b
+heltalskvot = a // b
+modulus = b % a
 
-#print(summa)
-#print(differens)
-#print(produkt)
-#print(kvot)
-#print(heltalskvot)
-#print(modelus)
+print(summa)
+print(differens)
+print(produkt)
+print(kvot)
+print(heltalskvot)
+print(modulus)
 
 #bas = 2
 #exponent = 3
