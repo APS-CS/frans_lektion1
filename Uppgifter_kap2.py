@@ -66,8 +66,9 @@ True}),
 "Biologi": {"studenter": {"Bob", "Charlie", "Eve"}},
 }
 }
-
-#Extrahera en tuple med namn på alla aktiva studenter (de vars "aktiv"-status är True).
+#¤
+##första listan - fick jobbet gjort för många steg
+##Extrahera en tuple med namn på alla aktiva studenter (de vars "aktiv"-status är True).
 namnlista = []
 
 for aktiv_student in data["studenter"]:
@@ -76,3 +77,19 @@ for aktiv_student in data["studenter"]:
 
 tuple_namnlista = tuple(namnlista)    
 print(tuple_namnlista, type(tuple_namnlista))
+
+
+
+##kom på att man kan göra om dikrekt efter "=" tecknet didrekt till tuple
+
+
+# namnlista = tuple()'
+
+tuple_namnlista = tuple(aktiv_student[0] for aktiv_student in data["studenter"] if aktiv_student[1]["aktiv"])
+print(tuple_namnlista)
+
+
+## *nytt_värde* for *variabler* in *iterable* if *villkor*
+## aktiva_studenter = tuple(namn for namn, dict etc
+
+namnlista2 = tuple(namn for namn, studentinfo in data["studenter"] if studentinfo["aktiv"])

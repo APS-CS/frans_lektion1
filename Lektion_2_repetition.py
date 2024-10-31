@@ -119,9 +119,9 @@
 
 ##dictionaries är mutable ##
 
-empty_dict = {}
+# empty_dict = {}
 
-person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
+# person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
 
 # print(person["name"])
 # print(person.get("name"))
@@ -144,9 +144,9 @@ person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
 # person["profession"] = "Hacker" 
 # print(person)
 
-key, value = person.popitem()
-print(key, value)
-print(person)
+# key, value = person.popitem()
+# print(key, value)
+# print(person)
 
 # person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
 
@@ -246,4 +246,3 @@ print(person)
 
 # frozen_fruits = frozenset(["apple", "orange", "grape"])
 # print(frozen_fruits)
-
