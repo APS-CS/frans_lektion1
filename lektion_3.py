@@ -122,6 +122,7 @@
 # for name, age, city in people:
 #     print(f"Namn: {name}, Ålder: {age}, Stad: {city}")
 
-person = {"name": "Alice", "age": 30, "city": "Stockholm"}
-for key, value in person.items(): #med items så ireterar vi över båda keys och values! Använden den mer!!!
-    print(f"{key}: {value}")
+# person = {"name": "Alice", "age": 30, "city": "Stockholm"}
+# for key, value in person.items(): #med items så ireterar vi över båda keys och values! Använden den mer!!!
+#     print(f"{key}: {value}")
+
