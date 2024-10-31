@@ -51,6 +51,49 @@
 #     print(value)
 #     print(" ")
 
+# data = {
+# "studenter": [
+# ("Alice", {"ålder": 25, "ämnen": ("Matematik", "Fysik"), "aktiv": True}),
+# ("Bob", {"ålder": 22, "ämnen": ("Biologi",), "aktiv": False}),
+# ("Charlie", {"ålder": 23, "ämnen": ("Matematik", "Biologi"), "aktiv": True}),
+# ("Diana", {"ålder": 24, "ämnen": ("Fysik",), "aktiv": False}),
+# ("Eve", {"ålder": 21, "ämnen": ("Matematik", "Fysik", "Biologi"), "aktiv":
+# True}),
+# ],
+# "kurser": {
+# "Matematik": {"studenter": {"Alice", "Charlie", "Eve"}},
+# "Fysik": {"studenter": {"Alice", "Diana", "Eve"}},
+# "Biologi": {"studenter": {"Bob", "Charlie", "Eve"}},
+# }
+# }
+#¤
+
+##Extrahera en tuple med namn på alla aktiva studenter (de vars "aktiv"-status är True).
+
+##första listan - fick jobbet gjort för många steg
+# namnlista = []
+
+# for aktiv_student in data["studenter"]:
+#     if aktiv_student[1]["aktiv"] == True:
+#         namnlista.append((aktiv_student[0]))
+
+# tuple_namnlista = tuple(namnlista)    
+# print(tuple_namnlista, type(tuple_namnlista))
+
+
+
+##kom på att man kan göra om dikrekt efter "=" tecknet didrekt till tuple
+
+
+# namnlista = tuple()'
+
+# tuple_namnlista = tuple(aktiv_student[0] for aktiv_student in data["studenter"] if aktiv_student[1]["aktiv"])
+# print(tuple_namnlista)
+
+
+## *nytt_värde* for *variabler* in *iterable* if *villkor*
+## aktiva_studenter = tuple(namn for namn, dict etc
+
 data = {
 "studenter": [
 ("Alice", {"ålder": 25, "ämnen": ("Matematik", "Fysik"), "aktiv": True}),
@@ -66,30 +109,23 @@ True}),
 "Biologi": {"studenter": {"Bob", "Charlie", "Eve"}},
 }
 }
-#¤
-##första listan - fick jobbet gjort för många steg
-##Extrahera en tuple med namn på alla aktiva studenter (de vars "aktiv"-status är True).
-namnlista = []
 
-for aktiv_student in data["studenter"]:
-    if aktiv_student[1]["aktiv"] == True:
-        namnlista.append((aktiv_student[0]))
+tuple_namnlista = tuple(
+    namn 
+    for namn, studentinfo 
+    in data["studenter"] 
+    if studentinfo["aktiv"]
+    )
 
-tuple_namnlista = tuple(namnlista)    
-print(tuple_namnlista, type(tuple_namnlista))
-
-
-
-##kom på att man kan göra om dikrekt efter "=" tecknet didrekt till tuple
-
-
-# namnlista = tuple()'
-
-tuple_namnlista = tuple(aktiv_student[0] for aktiv_student in data["studenter"] if aktiv_student[1]["aktiv"])
 print(tuple_namnlista)
 
+##Skapa ett set med alla unika ämnen som de aktiva studenterna studerar.
 
-## *nytt_värde* for *variabler* in *iterable* if *villkor*
-## aktiva_studenter = tuple(namn for namn, dict etc
+topic_set = set(
+    ämnen 
+    for namn, studentinfo in data["studenter"]
+    if namn in tuple_namnlista
+    for ämnen in studentinfo["ämnen"]
+    )
 
-namnlista2 = tuple(namn for namn, studentinfo in data["studenter"] if studentinfo["aktiv"])
+print(topic_set)
