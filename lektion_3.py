@@ -123,6 +123,36 @@
 #     print(f"Namn: {name}, Ålder: {age}, Stad: {city}")
 
 # person = {"name": "Alice", "age": 30, "city": "Stockholm"}
-# for key, value in person.items(): #med items så ireterar vi över båda keys och values! Använden den mer!!!
+# for key, value in person.items():     
+# 
+## ************med items så itererar vi över både keys och values! Använden den mer!!!***********
+
 #     print(f"{key}: {value}")
+
+##repetition
+# text = "Hello"
+# for bokstav in text:
+#     print(bokstav)
+
+# frukter = {"äpple" , "banan" , "körsbär"}
+# for frukt in frukter:
+#     print(frukt)
+
+# person = {"name": "Alice", "age": 30, "city": "Stockholm"}
+# for key in person.keys():
+#     print(key)
+
+# person = {"name": "Alice", "age": 30, "city": "Stockholm"}
+# for values in person.values():
+#     print(values)
+
+# for siffraetttillfyra in range(5): ## Range = inga konstigheter
+#     print(siffraetttillfyra)
+
+# for varannantvåtillåtta in range(2, 10 , 2):
+#     print(varannantvåtillåtta)
+
+# for i in range(3):
+#     for j in range(2):
+#         print(f"i: {i}, j:{j}")
 
