@@ -121,32 +121,32 @@
 
 # empty_dict = {}
 
-# person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
+person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
 
-# print(person["name"])
-# print(person.get("name"))
-# print(person.get("proffession", "Unknown")) ##skriver ut unknown om värdet inte finns
+print(person["name"])
+print(person.get("name"))
+print(person.get("proffession", "Unknown")) ##skriver ut unknown om värdet inte finns
 
-# person["age"] = 26
-# print(person)
+person["age"] = 26
+print(person)
 
-# person["profession"] = "Hacker" ##Lägger till en nyckel och värde i dictionarien
-# print(person)
+person["profession"] = "Hacker" ##Lägger till en nyckel och värde i dictionarien
+print(person)
 
-# age = person.pop("age")
-# print(age)
-# print(person)
+age = person.pop("age")
+print(age)
+print(person)
 
-# person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
-# del person["name"]
-# print(person)
+person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
+del person["name"]
+print(person)
 
-# person["profession"] = "Hacker" 
-# print(person)
+person["profession"] = "Hacker" 
+print(person)
 
-# key, value = person.popitem()
-# print(key, value)
-# print(person)
+key, value = person.popitem()
+print(key, value)
+print(person)
 
 # person = {"name": "Bobbo", "age": 37, "city": "Linköping"}
 
@@ -246,3 +246,4 @@
 
 # frozen_fruits = frozenset(["apple", "orange", "grape"])
 # print(frozen_fruits)
+
