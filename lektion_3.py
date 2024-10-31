@@ -156,3 +156,22 @@
 #     for j in range(2):
 #         print(f"i: {i}, j:{j}")
 
+# for i in range(10):
+#     if i == 5:
+#         break
+#     print(i)
+
+# for i in range(10):
+#     if i % 2 == 0:
+#         continue
+#     print(i)
+
+# x = 0
+# while x < 5:
+#     print(x)
+#     x += 1
+
+while True:
+    print("This is running forever")
+    break
+##om man vill avbryta utan break så är det trycka på ctrl + c
