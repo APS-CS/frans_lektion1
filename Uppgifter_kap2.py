@@ -70,7 +70,7 @@
 
 ##Extrahera en tuple med namn på alla aktiva studenter (de vars "aktiv"-status är True).
 
-#första listan - fick jobbet gjort för många steg
+# första listan - fick jobbet gjort för många steg
 # namnlista = []
 
 # for aktiv_student in data["studenter"]:
@@ -93,6 +93,7 @@
 
 ## *nytt_värde* for *variabler* in *iterable* if *villkor*
 ## aktiva_studenter = tuple(namn for namn, dict etc
+### nytt blad##
 
 data = {
 "studenter": [
@@ -104,12 +105,25 @@ data = {
 True}),
 ],
 "kurser": {
-"Matematik": {"studenter": {"Alice", "Charlie", "Eve"}},
-"Fysik": {"studenter": {"Alice", "Diana", "Eve"}},
-"Biologi": {"studenter": {"Bob", "Charlie", "Eve"}},
+    "Matematik": {
+        "studenter": {
+            "Alice", "Charlie", "Eve"
+            }
+            },
+    "Fysik": {
+        "studenter": {
+             "Alice", "Diana", "Eve"
+             }
+             },
+    "Biologi": {
+        "studenter": {
+            "Bob", "Charlie", "Eve"
+            }
+            },
 }
 }
 
+##chatgpt
 tuple_namnlista = tuple(
     namn 
     for namn, studentinfo in data["studenter"] 
@@ -119,7 +133,7 @@ tuple_namnlista = tuple(
 # print(tuple_namnlista)
 
 ##Skapa ett set med alla unika ämnen som de aktiva studenterna studerar.
-
+##använde chatgpts logik och funkar bra
 topic_set = set(
     unika_ämnen
     for namn, studentinfo in data["studenter"]
@@ -131,13 +145,13 @@ topic_set = set(
 
 ##Skapa en ordbok där nycklarna är kursnamnen och värdena är antalet aktiva studenter som är inskrivna i respektive kurs.
 
-tuple_dict = tuple(
-    studenterikurs
-    for studenterna, namnen in data["kurser"].items()
-    for studenterikurs in namnen["studenter"]
-)
+# tuple_dict = tuple(
+#     studenterikurs
+#     for studenterna, namnen in data["kurser"].items()
+#     for studenterikurs in namnen["studenter"]
+# )
+# print(tuple_dict) ##skriver ut alla namn från alla kurser
 
-print(tuple_dict)
 # print(data.get("kurser"),[1])
 
 # tuple_antalkursdelt = data["kurser"].get("Matematik")
@@ -149,9 +163,27 @@ print(tuple_dict)
 #     antal_studenter 
 #     for kurs1, kurs2, kurs3 in data["kurser"]
 #     for antal_studenter in kurs1.len(["studenter"]))
-
-
 # print(tuple_antalkursdelt)
 
-
 # print(f" Här kommer kurserna och antal studenter {kurser}: {antal_studenter} ")
+
+##fulkod 3000
+studenterokurser = data["kurser"]
+
+# mattestudenterlista = studenterokurser["Matematik"]
+# matttestudenter = mattestudenterlista.get("studenter")
+
+# values = studenterokurser.values()
+# for studenter_lista in values:
+#     for stud in matttestudenter:
+#         print(stud)
+
+values = studenterokurser.values()
+for studenter in values:
+    for enskilda_studenter in studenter.values():
+        print(len(enskilda_studenter))
+
+keys = studenterokurser.keys()
+for ämne in keys:
+    print(ämne)
+

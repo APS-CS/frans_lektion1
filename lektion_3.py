@@ -37,18 +37,18 @@
 # if x > 5 and y < 15:
 #     print("Both conditions are True")
 
-# def check_a():
-#     print("Kontrollerar a")
-#     return False
+def check_a():
+    print("Kontrollerar a")
+    return False
 
-# def check_b():
-#     print("Kontrollerar b")
-#     return True
+def check_b():
+    print("Kontrollerar b")
+    return True
 
-# if check_a() and check_b():
-#     print("Båda är sann")
-# else:
-#     print("Minst en är falsk")
+if check_a() and check_b():
+    print("Båda är sann")
+else:
+    print("Minst en är falsk")
 
 # results = värde_om_sant if villkor else värde_om falskt
 
@@ -92,11 +92,11 @@
 
 ## funktioner och IF -satser
 
-# def max_value(a, b):
-#     if a > b:
-#         return a
-#     else:
-#         return b
+def max_value(a, b):
+    if a > b:
+        return a
+    else:
+        return b
     
 # biggest = max_value(10, 20)
 # print(f"The biggest value is {biggest}")
@@ -171,7 +171,7 @@
 #     print(x)
 #     x += 1
 
-while True:
-    print("This is running forever")
-    break
+# while True:
+#     print("This is running forever")
+#     break
 ##om man vill avbryta utan break så är det trycka på ctrl + c
