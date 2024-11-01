@@ -170,6 +170,7 @@ topic_set = set(
 ##fulkod 3000
 studenterokurser = data["kurser"]
 
+##försök 1
 # mattestudenterlista = studenterokurser["Matematik"]
 # matttestudenter = mattestudenterlista.get("studenter")
 
@@ -178,12 +179,23 @@ studenterokurser = data["kurser"]
 #     for stud in matttestudenter:
 #         print(stud)
 
+##försök 2
 values = studenterokurser.values()
-for studenter in values:
-    for enskilda_studenter in studenter.values():
-        print(len(enskilda_studenter))
+for studentlista in values:
+    for enskilda_studenter in studentlista.values():
+        pass
+
 
 keys = studenterokurser.keys()
 for ämne in keys:
-    print(ämne)
+    pass
 
+dict_kursostud = {ämne: len(enskilda_studenter)}
+
+print(dict_kursostud)
+
+# dict_studokurs = {
+#     ämne: len(enskilda_studenter),
+# }
+# for dict_studokurs1 in ämne, len(enskilda_studenter):
+#     print(dict_studokurs1)
