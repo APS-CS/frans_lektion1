@@ -261,7 +261,10 @@ True}),
 }
 dict_courseandstudents = {}
 
-dict_courseandstudents["course_name"] = ((len(data["kurser"]["Matematik"]["studenter"])))
+dict_courseandstudents["Matematik"] = ((len(data["kurser"]["Matematik"]["studenter"])))
+dict_courseandstudents["Fysik"] = ((len(data["kurser"]["Fysik"]["studenter"])))
+dict_courseandstudents["Biologi"] = ((len(data["kurser"]["Biologi"]["studenter"])))
 
-print(dict_courseandstudents)
+for key, value in dict_courseandstudents.items():
+    print(f"Kurs: {key}, antal studenter: {value}")
 
