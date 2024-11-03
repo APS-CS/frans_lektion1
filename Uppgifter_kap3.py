@@ -10,3 +10,6 @@
 #         print(loopen)
 
 ##Uppgift 2 
+# f = open("log.txt", "r")
+# for innehåll in f:
+#     print(innehåll.strip())
