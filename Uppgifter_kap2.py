@@ -259,10 +259,9 @@ True}),
             },
 }
 }
+dict_courseandstudents = {}
 
-tarm = "studenter", "information" in data["kurser"]["studenter"]
+dict_courseandstudents["course_name"] = ((len(data["kurser"]["Matematik"]["studenter"])))
 
-print(tarm)
-
-
+print(dict_courseandstudents)
 

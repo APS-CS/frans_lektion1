@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Failed login attempt
 
 annan text
@@ -8,4 +9,11 @@ annan text 2
 
 hej på dig
 
+=======
+Failed login attempt
+annan text
+Failed login attempt
+annan text 2
+hej på dig
+>>>>>>> ea06d5732a9ebfaab5f00d7553a5e4c7d25348c7
 Failed login attempt
