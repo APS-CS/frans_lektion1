@@ -34,7 +34,8 @@
 #             print(product)
 
 
-#### Tabell v1.5 #####
+#### Tabell v1.6 #####
+print("Välkommen till multiplikationens värld.. 0 - 9" "\n")
 
 def numb_control(x):
     if x.isdigit() == True:
@@ -52,9 +53,10 @@ def multplicate_factors(a, b):
 
 
 while True:
-    factor1 = input("Ange en siffra mellan 0 - 9 F1: ")
+    factor1 = input("Ange första faktorn, siffra mellan 0 - 9: ")
     if numb_control(factor1):
-        factor2 = input("Ange en siffra mellan 0 - 9 F2: ")
+        factor2 = input("Ange andra faktorn, siffra mellan 0 - 9: ")
         if numb_control(factor2):
             product = multplicate_factors(int(factor1), int(factor2))  
-            print(product)
+            print(f"Produkten är: {product}")
+            break
