@@ -1,4 +1,4 @@
-# ##uppgift 1
+# #######################################uppgift 1#######################################
 # namn = " aNnA kaRlSsOn "
 
 # ##V1
@@ -14,14 +14,15 @@
 
 # print(resultat)
 
-# ##uppgift 2
+# #######################################uppgift 2#######################################
+
 # order = ("bröd", "mjölk", "ägg", "smör", "ost", "yoghurt")
 
 # print(order[0:3])
 # print(order[-2:])
 # print(order[::2])
 
-# ##uppgift 3
+# #######################################uppgift 3#######################################
 # film_lista = ["Inception", "The Matrix", "Interstellar", "The Prestige"]
 
 # if len(film_lista) > 1:
@@ -42,7 +43,9 @@
 #     print(film_lista)
 
 
-##uppgift 4##
+
+
+# ##########################uppgift 4##########################
 
 # for key, value in data.items():
 #     print("key:")
@@ -132,7 +135,6 @@
 
 # print(f" Här kommer kurserna och antal studenter {kurser}: {antal_studenter} ")
 
-##fulkod 3000
 
 ##försök 1
 # mattestudenterlista = studenterokurser["Matematik"]
@@ -178,60 +180,6 @@
 ##paus på den här uppgf...
 ##lördagmorgon
 
-# data = {
-# "studenter": [
-# ("Alice", {"ålder": 25, "ämnen": ("Matematik", "Fysik"), "aktiv": True}),
-# ("Bob", {"ålder": 22, "ämnen": ("Biologi",), "aktiv": False}),
-# ("Charlie", {"ålder": 23, "ämnen": ("Matematik", "Biologi"), "aktiv": True}),
-# ("Diana", {"ålder": 24, "ämnen": ("Fysik",), "aktiv": False}),
-# ("Eve", {"ålder": 21, "ämnen": ("Matematik", "Fysik", "Biologi"), "aktiv":
-# True}),
-# ],
-# "kurser": {
-#     "Matematik": {
-#         "studenter": {
-#             "Alice", "Charlie", "Eve"
-#             }
-#             },
-#     "Fysik": {
-#         "studenter": {
-#              "Alice", "Diana", "Eve"
-#              }
-#              },
-#     "Biologi": {
-#         "studenter": {
-#             "Bob", "Charlie", "Eve"
-#             }
-#             },
-# }
-# }
-# #första listan - fick jobbet gjort för många steg
-# namnlista = []
-
-# for aktiv_student in data["studenter"]:
-#     if aktiv_student[1]["aktiv"] == True:
-#         namnlista.append((aktiv_student[0]))
-
-# tuple_namnlista = tuple(namnlista)    
-# print(tuple_namnlista)
-
-# # tuple_namnlista = tuple(
-# #     namn 
-# #     for namn, studentinfo in data["studenter"] 
-# #     if studentinfo["aktiv"]
-#     # )
-# # print(tuple_namnlista)
-
-
-
-# topic_set = set(
-#     unika_ämnen
-#     for namn, studentinfo in data["studenter"]
-#     if namn in tuple_namnlista
-#     for unika_ämnen in studentinfo["ämnen"]
-#     )
-
-
 data = {
 "studenter": [
 ("Alice", {"ålder": 25, "ämnen": ("Matematik", "Fysik"), "aktiv": True}),
@@ -259,12 +207,38 @@ True}),
             },
 }
 }
+# #första listan - fick jobbet gjort..
+namnlista = []
+
+for aktiv_student in data["studenter"]:
+    if aktiv_student[1]["aktiv"] == True:
+        namnlista.append((aktiv_student[0]))
+
+tuple_namnlista = tuple(namnlista)    
+print(f"Aktiva studenter: {tuple_namnlista}")
+
+
+# tuple_namnlista = tuple(
+#     namn 
+#     for namn, studentinfo in data["studenter"] 
+#    if studentinfo["aktiv"])
+# print(tuple_namnlista)
+
+
+topic_set = set(
+    unika_ämnen
+    for namn, studentinfo in data["studenter"]
+    if namn in tuple_namnlista
+    for unika_ämnen in studentinfo["ämnen"]
+    )
+print(f"Ämnen: {topic_set}")
+
+
 dict_courseandstudents = {}
 
 dict_courseandstudents["Matematik"] = ((len(data["kurser"]["Matematik"]["studenter"])))
 dict_courseandstudents["Fysik"] = ((len(data["kurser"]["Fysik"]["studenter"])))
 dict_courseandstudents["Biologi"] = ((len(data["kurser"]["Biologi"]["studenter"])))
-
+ 
 for key, value in dict_courseandstudents.items():
     print(f"Kurs: {key}, antal studenter: {value}")
-

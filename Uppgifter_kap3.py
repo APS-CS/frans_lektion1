@@ -1,4 +1,4 @@
-##Uppgift 1 FizzBuzz
+#############Uppgift 1 FizzBuzz#############
 # for loopen in range(1, 101):
 #     if loopen % 3 == 0 and loopen % 3 == 0:
 #         print("FizzBuzz")
@@ -9,7 +9,7 @@
 #     else:
 #         print(loopen)
 
-##Uppgift 2 
-# f = open("log.txt", "r")
-# for innehåll in f:
-#     print(innehåll.strip())
+#############Uppgift 2 #############
+
+
+
