@@ -35,31 +35,69 @@
 
 
 #### Tabell v1.6 #####
-print("Välkommen till multiplikationens värld.. 0 - 9" "\n")
+# print("Välkommen till multiplikationens värld.. 0 - 9" "\n")
 
-def numb_control(x):
-    if x.isdigit() == True:
-        if -1 < int(x) < 10:
-            return True
-        else:
-            print(f"Fel gränsvärde: {x} - Siffran ska vara mellan 0 - 9")
+# def numb_control(x):
+#     if x.isdigit():
+#         if -1 < int(x) < 10:
+#             return True
+#         else:
+#             print(f"Fel gränsvärde: {x} - Siffran ska vara mellan 0 - 9")
+#     else:
+#         print(f"Felaktig värde: {x} - Ange en SIFFRA mellan 0 - 9")
+
+
+# def multplicate_factors(a, b):
+#     return a * b
+
+
+# while True:
+#     factor1 = input("Ange första faktorn, siffra mellan 0 - 9: ")
+#     if numb_control(factor1):
+#         factor2 = input("Ange andra faktorn, siffra mellan 0 - 9: ")
+#         if numb_control(factor2):
+#             product = multplicate_factors(int(factor1), int(factor2))  
+#             print(f"Produkten är: {product}")
+#             break
+
+
+### missförståt uppgiften... får göra tabell 2.0 ####
+
+### Tabell v2 #####
+
+print("Välkommen till Multiplikationstabellen 3000 \n")
+
+#en funktion att kotrollera om det är siffror
+
+def numb_control(numb_check):
+    if numb_check.isdigit():
+        return True
     else:
-        print(f"Felaktig värde: {x} - Ange en SIFFRA mellan 0 - 9")
+        print(f"Bruh.. {numb_check} är fel.. plz välj en siffra")
+
+#en funktion att skapa multitabell
+# x * 1
+# x * 2
+# x * 3
+# etc
+
+def multitabell(a):
+    resultat = int(a)
+    for lista in range(max_value):
+        print(f"{faktor} * {lista} = {resultat}")
+        resultat = resultat + 1
+    print("Utanför while")
 
 
-def multplicate_factors(a, b):
-    return a * b
-
-
+# inputen
 
 while True:
-    factor1 = input("Ange första faktorn, siffra mellan 0 - 9: ")
-    if numb_control(factor1):
-        factor2 = input("Ange andra faktorn, siffra mellan 0 - 9: ")
-        if numb_control(factor2):
-            product = multplicate_factors(int(factor1), int(factor2))  
-            print(f"Produkten är: {product}")
-            break
-
-
-##kan ha missförståt uppgiften... får göra mer
+    faktor = input("Skriv in siffran du vill multiplicera: ")
+    input_check = numb_control(faktor)
+    if input_check:
+        max_value = input("Skriv in produktmaxvärde: ")
+        input_check = numb_control(max_value)
+        if input_check and faktor <= max_value:
+            multitabell(faktor)
+        else:
+            print("Maxvärdet måste vara högre än siffran du vill multiplicera, Gör om gör rätt!")
