@@ -60,3 +60,6 @@ while True:
             product = multplicate_factors(int(factor1), int(factor2))  
             print(f"Produkten är: {product}")
             break
+
+
+##kan ha missförståt uppgiften... får göra mer
