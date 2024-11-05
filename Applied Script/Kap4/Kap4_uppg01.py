@@ -68,7 +68,6 @@
 print("Välkommen till Multiplikationstabellen 3000 \n")
 
 #en funktion att kotrollera om det är siffror
-
 def numb_control(numb_check):
     if numb_check.isdigit():
         return True
@@ -76,24 +75,22 @@ def numb_control(numb_check):
         print(f"Bruh.. {numb_check} är fel.. plz välj en siffra")
 
 #en funktion att skapa multitabell
-
-
 def multitabell(a):
-   for faktor2 in range(int(1),int(max_value)):
-            resultat = int(faktor2)*int(faktor))
-            while resultat < max_value
-            print(faktor, " x ", faktor2, " = ", int(faktor2)*int(faktor))
-
+   faktor2 = 1
+   for faktor2 in range(1,int(max_value)+2):
+    if int(faktor2)*int(faktor) <= int(max_value):
+        print(faktor, " x ", faktor2, " = ", int(faktor2)*int(faktor))
 
 # inputen
-
 while True:
     faktor = input("Skriv in siffran du vill multiplicera: ")
     input_check = numb_control(faktor)
     if input_check:
         max_value = input("Skriv in produktmaxvärde: ")
         input_check2 = numb_control(max_value)
-        if input_check2 and faktor <= max_value:
+        if input_check2 == True and int(max_value) >= int(faktor):
             multitabell(faktor)
         else:
             print("Maxvärdet måste vara högre än siffran du vill multiplicera, Gör om gör rätt!")
+    print("Där var din tabell, njut och var glad! \nHej då!")
+    break
