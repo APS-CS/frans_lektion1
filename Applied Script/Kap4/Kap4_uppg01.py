@@ -76,17 +76,13 @@ def numb_control(numb_check):
         print(f"Bruh.. {numb_check} är fel.. plz välj en siffra")
 
 #en funktion att skapa multitabell
-# x * 1
-# x * 2
-# x * 3
-# etc
+
 
 def multitabell(a):
-    resultat = int(a)
-    for lista in range(max_value):
-        print(f"{faktor} * {lista} = {resultat}")
-        resultat = resultat + 1
-    print("Utanför while")
+   for faktor2 in range(int(1),int(max_value)):
+            resultat = int(faktor2)*int(faktor))
+            while resultat < max_value
+            print(faktor, " x ", faktor2, " = ", int(faktor2)*int(faktor))
 
 
 # inputen
@@ -96,8 +92,8 @@ while True:
     input_check = numb_control(faktor)
     if input_check:
         max_value = input("Skriv in produktmaxvärde: ")
-        input_check = numb_control(max_value)
-        if input_check and faktor <= max_value:
+        input_check2 = numb_control(max_value)
+        if input_check2 and faktor <= max_value:
             multitabell(faktor)
         else:
             print("Maxvärdet måste vara högre än siffran du vill multiplicera, Gör om gör rätt!")
