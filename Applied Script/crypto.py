@@ -22,3 +22,5 @@ print(f"Dekrypterad text: {plain_text.decode()}")
 #### Skapa fil
 #### redigera fil
 #### kryptera/dekryptera fil
+
+
