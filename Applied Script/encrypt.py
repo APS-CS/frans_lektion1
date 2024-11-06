@@ -11,14 +11,3 @@ print(f"Ciphertext: {cipher_text}")                     ## kör script -> nu är
 
 with open("encrypted.enc", "wb") as file:               ## glöm inte att lägga til b efter w
     file.write(cipher_text)
-
-with open("encrypted.enc", "rb") as file:
-    encrypted_message = file.read()
-
-plain_text = cipher_suite.decrypt(encrypted_message)
-print(f"Dekrypterad text: {plain_text.decode()}")
-
-#### Slutuppgift:
-#### Skapa fil
-#### redigera fil
-#### kryptera/dekryptera fil
