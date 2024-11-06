@@ -5,6 +5,3 @@ user_credentials = {
     "user2": "Welcome123",
     "guest": "Guest1234"
 }
-
-# En lista över vanligt använda lösenord
-password_list = ["Password123", "123456", "Welcome123", "Guest1234", "password"]
