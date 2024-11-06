@@ -22,5 +22,5 @@ print(f"Dekrypterad text: {plain_text.decode()}")
 #### Skapa fil
 #### redigera fil
 #### kryptera/dekryptera fil
-
+#### genom argparse i terminal:  py crypto.py fil.txt encrypt osv
 
