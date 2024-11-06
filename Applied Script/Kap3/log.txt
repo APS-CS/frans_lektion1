@@ -1,19 +1,7 @@
-<<<<<<< HEAD
-Failed login attempt
-
-annan text
-
-Failed login attempt
-
-annan text 2
-
-hej på dig
-
-=======
-Failed login attempt
-annan text
-Failed login attempt
-annan text 2
-hej på dig
->>>>>>> ea06d5732a9ebfaab5f00d7553a5e4c7d25348c7
-Failed login attempt
+2023-10-01 12:00:00 User 'admin' logged in
+2023-10-01 12:05:00 Failed login attempt for user 'guest'
+2023-10-01 12:10:00 User 'admin' executed 'sudo rm -rf /'
+2023-10-01 12:15:00 User 'john' logged out
+2023-10-01 12:20:00 Failed login attempt for user 'admin'
+2023-10-01 12:25:00 User 'alice' changed password
+2023-10-01 12:30:00 User 'bob' added new user 'eve'

@@ -93,5 +93,3 @@ if args.verbose:
     print(f"Hej {args.name}, din ålder: {args.age}")
 else:
     print(f"Hej {args.name}")
-
-input
