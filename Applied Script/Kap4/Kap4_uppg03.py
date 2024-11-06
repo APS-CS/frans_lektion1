@@ -23,7 +23,7 @@ import os
 
 #Spara inköpslista
 def create_file(filename):
-    if not os.path.exists(filename):
+    if not os.path.exists(filename+".txt"):
         with open(filename + ".txt", "w") as listfile:
             print(f"Inköpslista {filename} skapades")
     else:
@@ -49,17 +49,19 @@ def append_item(filename, text):
 
 
 #ta bort från inköpslista
-def remove_item():
-    content = read_file()
-    remove = " " + input("Välja vara som ska tas bort: ") + " "
-    if remove in content:
-        edited_content = content.replace("\n" + remove, "")
-        save_content = (edited_content, "w")
+def remove_item(filename):
+    if os.path.exists(filename):
+        with open(filename, "r") as listfile:
+            content = listfile.readlines()
+            remove = " " + input("Välja vara som ska tas bort: ") + " "
+            if remove in content:
+                edited_content = content.replace("\n" + remove, "")
+                print(f"Vara {remove} borttagen")
+                return (edited_content, "w")
+    else:
+        print(f"Finns ingen inköpslista med namn: {filename} ")
 
 
-
-
-#Avsluta
 
 
 #Meny
@@ -93,7 +95,9 @@ while True:
             False
 
     elif choice == "4":
-        remove_item()
+        user_filename = input("Välj inköpslista: ")
+        osfilename = user_filename + ".txt"
+        remove_item(osfilename)
 
     elif choice == "5":
         print("Avslutar program")

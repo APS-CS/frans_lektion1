@@ -210,14 +210,19 @@
 # print(x)
 
 
-def outer_function():
-    x = "outer"
+# def outer_function():
+#     x = "outer"
 
-    def inner_function():
-        nonlocal x
-        x = "inre"
-        print(x)
-    inner_function()
-    print(x)
-    
-outer_function()
+#     def inner_function():
+#         nonlocal x
+#         x = "inre"
+#         print(x)
+#     inner_function()
+#     print(x)
+
+# outer_function()
+
+
+######## pip ########
+
+##ska du installera linux? kör fedora
