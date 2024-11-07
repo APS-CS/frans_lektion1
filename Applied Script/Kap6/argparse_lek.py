@@ -8,8 +8,8 @@ parser = argparse.ArgumentParser()      #### krav 2 - använd
 parser.add_argument("greeting", help="Hälsning visas")
 
     ###optional arguments! Dessa behöver inte fyllas i
-parser.add_argument("-n", "--numbers", type=int, nargs=2, help="Skriv in nummer som ska adderas") ####Notera -n och --numbers
-parser.add_argument("-b", "--Blubb_blubb", help="Gör inget men vill ha värde ett värde trolololo :)")  #### Gör inget men matar man in -a i temrinalen så förväntar den sig ett värde
+parser.add_argument("-n", "--numbers", type=int, nargs=2, help="Skriv in nummer som ska adderas")       ####Notera -n och --numbers
+parser.add_argument("-b", "--Blubb_blubb", help="Gör inget men vill ha värde ett värde trolololo :)")   #### Gör inget men matar man in -a i temrinalen så förväntar den sig ett värde
 
 
 
