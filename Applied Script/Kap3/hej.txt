@@ -1,0 +1,20 @@
+user1: Password123 -> Great success
+user1: 123456 -> Failed
+user1: Welcome123 -> Failed
+user1: Guest1234 -> Failed
+user1: password -> Failed
+admin: Password123 -> Failed
+admin: 123456 -> Failed
+admin: Welcome123 -> Failed
+admin: Guest1234 -> Failed
+admin: password -> Failed
+user2: Password123 -> Failed
+user2: 123456 -> Failed
+user2: Welcome123 -> Great success
+user2: Guest1234 -> Failed
+user2: password -> Failed
+guest: Password123 -> Failed
+guest: 123456 -> Failed
+guest: Welcome123 -> Failed
+guest: Guest1234 -> Great success
+guest: password -> Failed
