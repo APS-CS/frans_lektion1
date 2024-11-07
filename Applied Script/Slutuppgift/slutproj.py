@@ -13,3 +13,4 @@
 ## Generera en symmetrisk nyckel och spara den i en fil.
 ## Kryptera en fil med en befintlig nyckel.
 ## Dekryptera en krypterad fil och återställa originalet.
+
