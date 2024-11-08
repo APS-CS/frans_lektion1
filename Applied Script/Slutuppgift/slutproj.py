@@ -33,7 +33,7 @@
 
 
 #### FRÅGOR: Hur göra om flera filer? Krypera med bara en nyckel? Skapa en ny nyckel varje gång? Kan det bli dubbelkryp?
-
+#### FRÅGOR: vad händer med plaintext och enc fil? Ta vi bort? ersätter hela filen? är den redan krypterad?
 
 #### Argparse
 ## Det ska vara argparse som tar in fil i skripten krypterar/dekrypterar
@@ -58,6 +58,8 @@
 
 
 ################ Ain't nuttin but to do it!! ################
+## impertera os åtkomst
+import os
 
 ##importera argparse
 import argparse
@@ -77,7 +79,22 @@ def generate_key_mode(newkey):                                          ####funk
 
 
 #### funktion för att kryptera fil
-with open("crypto_key.key, rb") as key_file:
-    key = key_file.read()                                               #### öppnar förvald crypto_key.key                            
-    print("Nyckel skapat i RAM - great success! \n")                    #### Bekräftelse
+def encrypt_and_store_file(filename):
+    with open("crypto_key.key", "rb") as key_file:
+        key = key_file.read()                                               #### öppnar förvald crypto_key.key                            
+        print("Nyckel öppnat i RAM - great success! \n")                    #### Bekräftelse
 
+    cipher_suite = Fernet(key)
+
+#### HÄR MÅSTE VI VÄLJA ANGIVEN FIL OCH LÄSA AV INNEHÅLLET
+#### Det är innehållet alltså bytes som krypteras inte skalet!
+
+filename = os.path.exists("testfil")
+
+cipher_suite = Fernet(key)
+
+with open("filename", "rb") as file_to_encrypt:
+    content = file_to_encrypt.read()
+    cipher_content = cipher_suite.encrypt(content)
+    cipher_content.write("filename", "wb")                     
+    print(f"Innehåll i fil: {filename} är krypterad")
