@@ -28,7 +28,7 @@
 ## skapa skript som gör krypteringsprocedur, ha samma fil som avkrypterar
 
 ## skapa funktion för att skapar nyckel - CHECK
-## skapa funktion för att kryptera
+## skapa funktion för att kryptera - CHECK
 ## skapa funktion för att dekryptera
 
 
@@ -79,30 +79,35 @@ def generate_key_mode(newkey):                                          ####funk
 
 
 #### funktion för att kryptera fil
-def encrypt_and_store_file(filename):
+def encrypt_and_store_info(filename):
     with open("crypto_key.key", "rb") as key_file:
         key = key_file.read()                                               #### öppnar förvald crypto_key.key                            
-        print("Nyckel öppnat i RAM - great success! \n")                    #### Bekräftelse
-
-        cipher_suite = Fernet(key)
-
-
-
-
-filename = os.path.exists("testfil.py")
-print(filename)                                                         #### Boolean bekräftelse  
-
-with open("crypto_key.key", "rb") as key_file:
-    key = key_file.read()                                               #### öppnar förvald crypto_key.key                            
-    print("Nyckel öppnat i RAM - great success! \n")    
+        print("Nyckel öppnat i RAM - success! KRYPTERING \n")                    #### Bekräftelse
 
     cipher_suite = Fernet(key)
 
+    with open("testfil.py", "rb") as file_to_encrypt:                      
+        content = file_to_encrypt.read()
+        cipher_content = cipher_suite.encrypt(content)
+        
+        with open("testfil.py", "wb") as file_to_encrypt:                   #### måste skriva över, går inte att använda rb+
+            file_to_encrypt.write(cipher_content)                               #### pröva sen med att anävnda rb+ är det plain text + cipher text som ligger i filen då?
+            print(f"Innehåll i fil: testfil.py är krypterad - GREAT SUCCESS")
 
 
-with open("testfil.py", "rb+") as file_to_encrypt:                      #### stack overflow info :D
-    content = file_to_encrypt.read()
-    cipher_content = cipher_suite.encrypt(content)
-    # with open("testfil.py", "wb") as file_to_encrypt:
-    file_to_encrypt.write(cipher_content)                     
-    print(f"Innehåll i fil: testfil.py är krypterad")
+
+#### funktion för att deryptera fil
+def decrypt_and_store_info(filename):
+    with open("crypto_key.key", "rb") as key_file:
+        key = key_file.read()
+        print("Nyckel öppnat i RAM - success! DEKRYPTERING \n")
+
+    cipher_suite = Fernet(key)
+
+    with open("testfil.py", "rb") as file_to_decrypt:                      
+        content = file_to_decrypt.read()
+        cipher_content = cipher_suite.decrypt(content)
+        
+        with open("testfil.py", "wb") as file_to_decrypt:                   #### Pröva copy pasta ovan men byter ut variabler och funktioner
+            file_to_decrypt.write(cipher_content)
+            print(f"Innehåll i fil: testfil.py är dekrypterad - GREAT SUCCESS")
