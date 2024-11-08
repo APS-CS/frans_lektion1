@@ -29,7 +29,7 @@
 
 ## skapa funktion för att skapar nyckel - CHECK
 ## skapa funktion för att kryptera - CHECK
-## skapa funktion för att dekryptera
+## skapa funktion för att dekryptera - CHECK
 
 
 #### FRÅGOR: Hur göra om flera filer? Krypera med bara en nyckel? Skapa en ny nyckel varje gång? Kan det bli dubbelkryp?
@@ -68,21 +68,22 @@ parser = argparse.ArgumentParser()
 ##importera Fernet
 from cryptography.fernet import Fernet
 
-#### funktion för at skapa nyckel
-def generate_key_mode(newkey):                                          ####funktionen skapar ny nykel.. hur använda en nyckel som är redan skapad?
-    newkey = Fernet.generate_key()
-    print("Nyckel skapat i RAM - great success! \n")                    ####Bekräftelse
 
-    with open("crypto_key.key", "wb") as key_file:                      ####Förvald crypto_key.key
+#### funktion för at skapa nyckel
+def generate_key_mode(newkey):                                                  ####funktionen skapar ny nykel.. hur använda en nyckel som är redan skapad?
+    newkey = Fernet.generate_key()
+    print("Nyckel skapat i RAM - great success! \n")                            ####Bekräftelse
+
+    with open("crypto_key.key", "wb") as key_file:                              ####Förvald crypto_key.key
         key_file.write(newkey)
-        print("Nyckel skapat i fil - great success! \n")                ####Bekräftelse
+        print("Nyckel skapat i fil - great success! \n")                        ####Bekräftelse
 
 
 #### funktion för att kryptera fil
 def encrypt_and_store_info(filename):
     with open("crypto_key.key", "rb") as key_file:
-        key = key_file.read()                                               #### öppnar förvald crypto_key.key                            
-        print("Nyckel öppnat i RAM - success! KRYPTERING \n")                    #### Bekräftelse
+        key = key_file.read()                                                    #### öppnar förvald crypto_key.key                            
+        print("Nyckel öppnat i RAM - success! KRYPTERING")                       #### Bekräftelse
 
     cipher_suite = Fernet(key)
 
@@ -90,10 +91,9 @@ def encrypt_and_store_info(filename):
         content = file_to_encrypt.read()
         cipher_content = cipher_suite.encrypt(content)
         
-        with open("testfil.py", "wb") as file_to_encrypt:                   #### måste skriva över, går inte att använda rb+
-            file_to_encrypt.write(cipher_content)                               #### pröva sen med att anävnda rb+ är det plain text + cipher text som ligger i filen då?
-            print(f"Innehåll i fil: testfil.py är krypterad - GREAT SUCCESS")
-
+        with open("testfil.py", "wb") as file_to_encrypt:                        #### måste skriva över, går inte att använda rb+
+            file_to_encrypt.write(cipher_content)                                #### pröva sen med att anävnda rb+ är det plain text + cipher text som ligger i filen då?
+            print(f"Innehåll i fil: testfil.py är krypterad - GREAT SUCCESS \n")
 
 
 #### funktion för att deryptera fil
@@ -108,6 +108,6 @@ def decrypt_and_store_info(filename):
         content = file_to_decrypt.read()
         cipher_content = cipher_suite.decrypt(content)
         
-        with open("testfil.py", "wb") as file_to_decrypt:                   #### Pröva copy pasta ovan men byter ut variabler och funktioner
+        with open("testfil.py", "wb") as file_to_decrypt:                        #### Pröva copy pasta ovan men byter ut variabler och funktioner
             file_to_decrypt.write(cipher_content)
-            print(f"Innehåll i fil: testfil.py är dekrypterad - GREAT SUCCESS")
+            print(f"Innehåll i fil: testfil.py är dekrypterad - GREAT SUCCESS \n")
