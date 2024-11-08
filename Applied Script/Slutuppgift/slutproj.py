@@ -100,10 +100,9 @@ with open("crypto_key.key", "rb") as key_file:
 
 
 
-with open("testfil.py", "rb") as file_to_encrypt:
+with open("testfil.py", "rb+") as file_to_encrypt:                      #### stack overflow info :D
     content = file_to_encrypt.read()
-    # content1 = content.encode()
     cipher_content = cipher_suite.encrypt(content)
-    with open("testfil.py", "wb") as file_to_encrypt:
-        file_to_encrypt.write(cipher_content)                     
-        print(f"Innehåll i fil: testfil.py är krypterad")
+    # with open("testfil.py", "wb") as file_to_encrypt:
+    file_to_encrypt.write(cipher_content)                     
+    print(f"Innehåll i fil: testfil.py är krypterad")
