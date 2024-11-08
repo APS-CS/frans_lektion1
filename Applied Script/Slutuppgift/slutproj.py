@@ -69,34 +69,32 @@ parser = argparse.ArgumentParser()
 from cryptography.fernet import Fernet
 
 #### funktion för at skapa nyckel
-def generate_key_mode(newkey):                                          ####funktionen skapar ny nykel.. hur använda en nyckel som är redan skapad?
-    newkey = Fernet.generate_key()
-    print("Nyckel skapat i RAM - great success! \n")                    ####Bekräftelse
+# def generate_key_mode(newkey):                                          ####funktionen skapar ny nykel.. hur använda en nyckel som är redan skapad?
+newkey = Fernet.generate_key()
+print("Nyckel skapat i RAM - great success! \n")                    ####Bekräftelse
 
-    with open("crypto_key.key", "wb") as key_file:                      ####Förvald crypto_key.key
-        key_file.write(newkey)
-        print("Nyckel skapat i fil - great success! \n")                ####Bekräftelse
+with open("crypto_key.key", "wb") as key_file:                      ####Förvald crypto_key.key
+    key_file.write(newkey)
+    print("Nyckel skapat i fil - great success! \n")                ####Bekräftelse
 
 
 #### funktion för att kryptera fil
-def encrypt_and_store_file(filename):
-    with open("crypto_key.key", "rb") as key_file:
-        key = key_file.read()                                               #### öppnar förvald crypto_key.key                            
-        print("Nyckel öppnat i RAM - great success! \n")                    #### Bekräftelse
+# def encrypt_and_store_file(filename):
+with open("crypto_key.key", "rb") as key_file:
+    key = key_file.read()                                               #### öppnar förvald crypto_key.key                            
+    print("Nyckel öppnat i RAM - great success! \n")                    #### Bekräftelse
 
     cipher_suite = Fernet(key)
 
-#### HÄR MÅSTE VI VÄLJA ANGIVEN FIL OCH LÄSA AV INNEHÅLLET
-#### Det är innehållet alltså bytes som krypteras inte skalet!
+
 
 cipher_suite = Fernet(key)
 
 filename = os.path.exists("testfil.py")
+print(filename)                                                             #### Boolean bekräftelse
 
-
-with open("filename", "rb") as file_to_encrypt:
-    content = file_to_encrypt.read()
+with open("testfil.py", "rb") as file_to_encrypt:
+    content = file_to_encrypt.encode()
     cipher_content = cipher_suite.encrypt(content)
     cipher_content.write("filename", "wb")                     
     print(f"Innehåll i fil: {filename} är krypterad")
-    
