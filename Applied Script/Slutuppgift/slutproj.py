@@ -22,3 +22,31 @@
 
 ## Dekryptera en krypterad fil och återställa originalet.
 
+#### Engna anteckningar:
+## skapa skript som gör krypteringsprocedur, ha samma fil som avkrypterar
+## Det ska vara argparse som tar in fil i skripten och kör bestämd kommando.
+
+#### Om tid finns: 
+## skapa (i skripten) funktion för felmeddelande, tex om filen redan är krypterad eller om filen redan av avkrypterad
+## köra skripten och skapa ny nyckel
+
+##importera argparse
+import argparse
+parser = argparse.ArgumentParser()   
+
+##importera Fernet
+from cryptography.fernet import Fernet
+
+key = Fernet.generate_key()
+print("Nyckel skapat - great success!")
+
+with open("crypto_key.key", "wb") as cf:
+    ck.write(key)
+
+
+
+# ## öppnar med nyckeln
+# with open("crypto_key.key", "wb") as file:
+#     key = file.read()
+
+# cipher_suite = Fernet(key)
