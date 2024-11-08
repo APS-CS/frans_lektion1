@@ -89,12 +89,14 @@ def encrypt_and_store_file(filename):
 #### HÄR MÅSTE VI VÄLJA ANGIVEN FIL OCH LÄSA AV INNEHÅLLET
 #### Det är innehållet alltså bytes som krypteras inte skalet!
 
-filename = os.path.exists("testfil")
-
 cipher_suite = Fernet(key)
+
+filename = os.path.exists("testfil.py")
+
 
 with open("filename", "rb") as file_to_encrypt:
     content = file_to_encrypt.read()
     cipher_content = cipher_suite.encrypt(content)
     cipher_content.write("filename", "wb")                     
     print(f"Innehåll i fil: {filename} är krypterad")
+    
