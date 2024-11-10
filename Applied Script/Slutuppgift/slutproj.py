@@ -64,7 +64,6 @@
 ################ Ain't nuttin but to do it!! ################
 ## impertera os åtkomst
 import os
-import pyfiglet
 
 ##importera argparse
 import argparse
@@ -75,21 +74,19 @@ from cryptography.fernet import Fernet
 
 
 #### funktion för att skapa nyckel
-def generate_key_mode():                                                  ####funktionen skapar ny nykel.. hur använda en nyckel som är redan skapad?
+def generate_key_mode(name_key_in_gkm):                                                #### funktionen skapar ny nykel.. hur använda en nyckel som är redan skapad?
     newkey = Fernet.generate_key()
-    print("Nyckel skapat i RAM - great success! \n")                            ####Bekräftelse
-    name_key = input("Döp filen: ")
-    with open(name_key, "wb") as key_file:                                      ####kan nu spara ny nyckel
+    print("Nyckel skapat i RAM - great success! \n")                            #### Bekräftelse
+    with open(name_key_in_gkm, "wb") as key_file:                                      #### kan nu spara ny nyckel
         key_file.write(newkey)
-        print("Nyckel skapat i fil - great success! \n")                        ####Bekräftelse
+        print("Nyckel skapat i fil - great success! \n")                        #### Bekräftelse
 
 
 #### funktion för att kryptera fil
 def encrypt_and_store_info():
-    name_key = input("Välj nyckel: ")
     with open(name_key, "rb") as key_file:                                       #### Öppnar med vald nyckel
         key = key_file.read()                                                                               
-        print(f"Nyckel {name_key} öppnat i RAM - success! KRYPTERING")                       #### Bekräftelse
+        print(f"Nyckel {name_key} öppnat i RAM - success! KRYPTERING")           #### Bekräftelse
 
     cipher_suite = Fernet(key)
 
@@ -97,17 +94,16 @@ def encrypt_and_store_info():
         content = file_to_encrypt.read()
         cipher_content = cipher_suite.encrypt(content)
         
-        with open("testfil.py", "wb") as file_to_encrypt:                        #### måste skriva över, går inte att använda rb+
-            file_to_encrypt.write(cipher_content)                                #### pröva sen med att anävnda rb+ är det plain text + cipher text som ligger i filen då?
-            print(f"Innehåll i fil: testfil.py är krypterad - GREAT SUCCESS \n")
+        with open("testfil.py", "wb") as file_to_encrypt:                           #### måste skriva över, går inte att använda rb+
+            file_to_encrypt.write(cipher_content)                                   #### pröva sen med att anävnda rb+ är det plain text + cipher text som ligger i filen då?
+            print(f"Innehåll i fil: testfil.py är krypterad - GREAT SUCCESS \n")    #### Bekräftelse
 
 
 #### funktion för att deryptera fil
 def decrypt_and_store_info():
-    name_key = input("Välj nyckel: ")
     with open(name_key, "rb") as key_file:
         key = key_file.read()
-        print(f"Nyckel {name_key} öppnat i RAM - success! DEKRYPTERING \n")
+        print(f"Nyckel {name_key} öppnat i RAM - success! DEKRYPTERING \n")         #### Bekräftelse
 
     cipher_suite = Fernet(key)
 
@@ -115,9 +111,10 @@ def decrypt_and_store_info():
         content = file_to_decrypt.read()
         cipher_content = cipher_suite.decrypt(content)
         
-        with open("testfil.py", "wb") as file_to_decrypt:                        #### Pröva copy pasta ovan men byter ut variabler och funktioner
+        with open("testfil.py", "wb") as file_to_decrypt:                           #### Pröva copy pasta ovan men byter ut variabler och funktioner
             file_to_decrypt.write(cipher_content)
-            print(f"Innehåll i fil: testfil.py är dekrypterad - GREAT SUCCESS \n")
+            print(f"Innehåll i fil: testfil.py är dekrypterad - GREAT SUCCESS \n")  #### Bekräftelse
+
 
 
 #### Dags att bygga args :D
@@ -132,20 +129,28 @@ parser.add_argument("-d", "--decrypt_file", action="store_true", help="Filen dek
 
 args = parser.parse_args()          #### tsm argparse.ArgumentParser aktiverar argsparse I guess
 
+
+
+#### If-satserna
+
 if args.create_key:
-    print("generate_key_mode()- MODE AKTIVERAD\n")
-    generate_key_mode()
-    print("Ny nyckel skapad - Programmet stängs")
+    print("generate_key_mode()- MODE AKTIVERAD\n")                                  #### Bekräftelse
+    name_key = input("Välj nyckel: ")
+    if not os.path.exists(name_key):
+        generate_key_mode(name_key)
+        print("Ny nyckel skapad - Programmet stängs")                                   #### Bekräftelse
+    else:
+        print(f"Nyckel {name_key} finns redan - Programmet stängs")  
     
 elif args.encrypt_file:
-    print("encrypt_and_store_inf()- MODE AKTIVERAD\n")
+    print("encrypt_and_store_inf()- MODE AKTIVERAD\n")                              #### Bekräftelse
     encrypt_and_store_info()
-    print("Krypterat - Programmet stängs")
+    print("Krypterat - Programmet stängs")                                          #### Bekräftelse
 
 elif args.decrypt_file:
-    print("decrypt_and_store_info()- MODE AKTIVERAD\n")
+    print("decrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
     decrypt_and_store_info()
-    print("Dekrypterat - Programmet stängs")
+    print("Dekrypterat - Programmet stängs")                                        #### Bekräftelse
 
 # elif args.filename:
 #     filename_to_store = args.filename
