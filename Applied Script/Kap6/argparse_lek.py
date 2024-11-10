@@ -10,6 +10,9 @@ parser.add_argument("greeting", help="Hälsning visas")
     ###optional arguments! Dessa behöver inte fyllas i
 parser.add_argument("-n", "--numbers", type=int, nargs=2, help="Skriv in nummer som ska adderas")       ####Notera -n och --numbers
 parser.add_argument("-b", "--Blubb_blubb", help="Gör inget men vill ha värde ett värde trolololo :)")   #### Gör inget men matar man in -a i temrinalen så förväntar den sig ett värde
+parser.add_argument("-c", "--Choices_2000", choices="yn", help="Välj Y eller N")
+parser.add_argument("-d", metavar="Hejsan!", help="d metavar")
+parser.add_argument("-f", "--file", help="filhantering")
 
 
 

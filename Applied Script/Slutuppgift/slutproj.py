@@ -74,21 +74,22 @@ parser = argparse.ArgumentParser(description="Krypteringsverktyg 5000", epilog="
 from cryptography.fernet import Fernet
 
 
-#### funktion för at skapa nyckel
+#### funktion för att skapa nyckel
 def generate_key_mode():                                                  ####funktionen skapar ny nykel.. hur använda en nyckel som är redan skapad?
     newkey = Fernet.generate_key()
     print("Nyckel skapat i RAM - great success! \n")                            ####Bekräftelse
-
-    with open("crypto_key.key", "wb") as key_file:                              ####Förvald crypto_key.key
+    name_key = input("Döp filen: ")
+    with open(name_key, "wb") as key_file:                                      ####kan nu spara ny nyckel
         key_file.write(newkey)
         print("Nyckel skapat i fil - great success! \n")                        ####Bekräftelse
 
 
 #### funktion för att kryptera fil
 def encrypt_and_store_info():
-    with open("crypto_key.key", "rb") as key_file:
-        key = key_file.read()                                                    #### öppnar förvald crypto_key.key                            
-        print("Nyckel öppnat i RAM - success! KRYPTERING")                       #### Bekräftelse
+    name_key = input("Välj nyckel: ")
+    with open(name_key, "rb") as key_file:                                       #### Öppnar med vald nyckel
+        key = key_file.read()                                                                               
+        print(f"Nyckel {name_key} öppnat i RAM - success! KRYPTERING")                       #### Bekräftelse
 
     cipher_suite = Fernet(key)
 
@@ -103,9 +104,10 @@ def encrypt_and_store_info():
 
 #### funktion för att deryptera fil
 def decrypt_and_store_info():
-    with open("crypto_key.key", "rb") as key_file:
+    name_key = input("Välj nyckel: ")
+    with open(name_key, "rb") as key_file:
         key = key_file.read()
-        print("Nyckel öppnat i RAM - success! DEKRYPTERING \n")
+        print(f"Nyckel {name_key} öppnat i RAM - success! DEKRYPTERING \n")
 
     cipher_suite = Fernet(key)
 
@@ -126,6 +128,8 @@ parser.add_argument("-e", "--encrypt_file", action="store_true", help="Filen kry
 
 parser.add_argument("-d", "--decrypt_file", action="store_true", help="Filen dekrypteras")
 
+# parser.add_argument("filename", type=str, help="Ange fil") ### Hamnar som första argument
+
 args = parser.parse_args()          #### tsm argparse.ArgumentParser aktiverar argsparse I guess
 
 if args.create_key:
@@ -142,3 +146,8 @@ elif args.decrypt_file:
     print("decrypt_and_store_info()- MODE AKTIVERAD\n")
     decrypt_and_store_info()
     print("Dekrypterat - Programmet stängs")
+
+# elif args.filename:
+#     filename_to_store = args.filename
+#     open(filename_to_store, "w")
+#     print(f"Fil {filename_to_store} skapad")
