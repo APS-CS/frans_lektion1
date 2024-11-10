@@ -63,7 +63,7 @@ import os
 
 ##importera argparse
 import argparse
-parser = argparse.ArgumentParser(description="Krypteringsverktyg 5000")   
+parser = argparse.ArgumentParser(description="Krypteringsverktyg 5000", epilog="EPILOG TEXT, EPILOG TEXT, EPILOG TEXT")   
 
 ##importera Fernet
 from cryptography.fernet import Fernet
@@ -80,7 +80,7 @@ def generate_key_mode(newkey):                                                  
 
 
 #### funktion för att kryptera fil
-def encrypt_and_store_info(filename):
+def encrypt_and_store_info():
     with open("crypto_key.key", "rb") as key_file:
         key = key_file.read()                                                    #### öppnar förvald crypto_key.key                            
         print("Nyckel öppnat i RAM - success! KRYPTERING")                       #### Bekräftelse
@@ -97,7 +97,7 @@ def encrypt_and_store_info(filename):
 
 
 #### funktion för att deryptera fil
-def decrypt_and_store_info(filename):
+def decrypt_and_store_info():
     with open("crypto_key.key", "rb") as key_file:
         key = key_file.read()
         print("Nyckel öppnat i RAM - success! DEKRYPTERING \n")
@@ -115,7 +115,9 @@ def decrypt_and_store_info(filename):
 
 #### Dags att bygga argparse :D
 
-parser.add_argument("-e" "--encrypt", help="Ange fil att kryptera")
+parser.add_argument("-c", action="store_true", help="Skapa krypteringsnyckel")
+parser.add_argument("-e", action="store_true", help="Filen krypteras")
+parser.add_argument("-d", action="store_true", help="Filen dekrypteras")
 
 
 args = parser.parse_args()                                                      #### tsm argparse.ArgumentParser aktiverar argsparse I guess
