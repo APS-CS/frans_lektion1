@@ -100,20 +100,20 @@ def encrypt_and_store_info(file, key):
 
 
 #### funktion för att deryptera fil
-def decrypt_and_store_info():
-    with open(name_key, "rb") as key_file:
+def decrypt_and_store_info(file, key):
+    with open(key, "rb") as key_file:
         key = key_file.read()
-        print(f"Nyckel {name_key} öppnat i RAM - success! DEKRYPTERING \n")         #### Bekräftelse
+        print(f"Nyckel {key} öppnat i RAM - success! DEKRYPTERING \n")         #### Bekräftelse
 
     cipher_suite = Fernet(key)
 
-    with open("testfil.py", "rb") as file_to_decrypt:                      
+    with open(file, "rb") as file_to_decrypt:                      
         content = file_to_decrypt.read()
         cipher_content = cipher_suite.decrypt(content)
         
-        with open("testfil.py", "wb") as file_to_decrypt:                           #### Pröva copy pasta ovan men byter ut variabler och funktioner
+        with open(file, "wb") as file_to_decrypt:                           #### Pröva copy pasta ovan men byter ut variabler och funktioner
             file_to_decrypt.write(cipher_content)
-            print(f"Innehåll i fil: testfil.py är dekrypterad - GREAT SUCCESS \n")  #### Bekräftelse
+            print(f"Innehåll i fil: {file} är dekrypterad - GREAT SUCCESS \n")  #### Bekräftelse
 
 
 
@@ -155,7 +155,9 @@ elif args.encrypt_file:
 
 elif args.decrypt_file:
     print("decrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
-    decrypt_and_store_info()
+    file = input("Välj fil: ")
+    key = input("Välj nyckel:")
+    decrypt_and_store_info(file, key)
     print("Dekrypterat - Programmet stängs")                                        #### Bekräftelse
 
 # elif args.filename:
