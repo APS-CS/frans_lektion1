@@ -146,19 +146,35 @@ if args.create_key:
 
 elif args.encrypt_file:
     print("encrypt_and_store_inf()- MODE AKTIVERAD\n")                              #### Bekräftelse
-    file = input("Välj fil: ")
+
+    file = input("Välj fil: ")                                                      #### måste lägga in kontroll om filen finns eller ej
+    if os.path.exists(file):
+        print(f"Filen {file} hittad")                                               #### Bekräftelse
+    else:
+        print(f"Fil {file} ej hittad")                                              #### Bekräftelse
+
     key = input("Välj nyckel:")
-    encrypt_and_store_info(file, key)
+    if os.path.exists(key):
+        print(f"Filen {key} hittad")                                                #### Bekräftelse        
+        encrypt_and_store_info(file, key)
+    else:
+        print(f"Nyckel {key} ej hittad")                                            #### Bekräftelse
+
     print("Krypterat - Programmet stängs")                                          #### Bekräftelse
 
 
 
 elif args.decrypt_file:
-    print("decrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
-    file = input("Välj fil: ")
+    print("decrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse                            
+    file = input("Välj fil: ")                                                      #### Bekräftelse#### måste lägga in kontroll om filen finns eller ej
+
     key = input("Välj nyckel:")
     decrypt_and_store_info(file, key)
     print("Dekrypterat - Programmet stängs")                                        #### Bekräftelse
+
+
+
+
 
 # elif args.filename:
 #     filename_to_store = args.filename
