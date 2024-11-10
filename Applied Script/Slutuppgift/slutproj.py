@@ -63,7 +63,7 @@ import os
 
 ##importera argparse
 import argparse
-parser = argparse.ArgumentParser()   
+parser = argparse.ArgumentParser(description="Krypteringsverktyg 5000")   
 
 ##importera Fernet
 from cryptography.fernet import Fernet
@@ -111,3 +111,11 @@ def decrypt_and_store_info(filename):
         with open("testfil.py", "wb") as file_to_decrypt:                        #### Pröva copy pasta ovan men byter ut variabler och funktioner
             file_to_decrypt.write(cipher_content)
             print(f"Innehåll i fil: testfil.py är dekrypterad - GREAT SUCCESS \n")
+
+
+#### Dags att bygga argparse :D
+
+parser.add_argument("-e" "--encrypt", help="Ange fil att kryptera")
+
+
+args = parser.parse_args()                                                      #### tsm argparse.ArgumentParser aktiverar argsparse I guess
