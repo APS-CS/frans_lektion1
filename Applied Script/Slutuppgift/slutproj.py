@@ -60,6 +60,7 @@
 ################ Ain't nuttin but to do it!! ################
 ## impertera os åtkomst
 import os
+import pyfiglet
 
 ##importera argparse
 import argparse
@@ -70,7 +71,7 @@ from cryptography.fernet import Fernet
 
 
 #### funktion för at skapa nyckel
-def generate_key_mode(newkey):                                                  ####funktionen skapar ny nykel.. hur använda en nyckel som är redan skapad?
+def generate_key_mode():                                                  ####funktionen skapar ny nykel.. hur använda en nyckel som är redan skapad?
     newkey = Fernet.generate_key()
     print("Nyckel skapat i RAM - great success! \n")                            ####Bekräftelse
 
@@ -115,9 +116,16 @@ def decrypt_and_store_info():
 
 #### Dags att bygga argparse :D
 
-parser.add_argument("-c", action="store_true", help="Skapa krypteringsnyckel")
-parser.add_argument("-e", action="store_true", help="Filen krypteras")
-parser.add_argument("-d", action="store_true", help="Filen dekrypteras")
+parser.add_argument("-c", "--create_key", action="store_true", help="Skapa krypteringsnyckel")
+parser.add_argument("-e", "--encrypt_file", action="store_true", help="Filen krypteras")
+parser.add_argument("-d", "--decrypt_file", action="store_true", help="Filen dekrypteras")
 
 
 args = parser.parse_args()                                                      #### tsm argparse.ArgumentParser aktiverar argsparse I guess
+
+if args.create_key:
+    generate_key_mode()
+elif args.encrypt_file:
+    encrypt_and_store_info()
+elif args.decrypt_file:
+    decrypt_and_store_info()
