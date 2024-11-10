@@ -32,21 +32,25 @@
 ## skapa funktion för att dekryptera - CHECK
 
 
-#### FRÅGOR: Hur göra om flera filer? Krypera med bara en nyckel? Skapa en ny nyckel varje gång? Kan det bli dubbelkryp?
-#### FRÅGOR: vad händer med plaintext och enc fil? Ta vi bort? ersätter hela filen? är den redan krypterad?
+#### FRÅGOR och SVAR: vad händer med plaintext och enc fil? Ta vi bort? ersätter hela filen? är den redan krypterad? - Svar: Ja, du krypterar bytes och därmed innehåll, det är inte en åtkomst till fil du blockarar utan klar läsning av innehåll
+
+#### FRÅGOR och SVAR: Kan det bli dubbelkryp? - Ja! Inga problem om samma krypnyckel används, problem om man kopierar över med ny kryp men har inte var den gamla
+
+#### FRÅGOR: Hur göra om flera filer? Krypera med bara en nyckel? Skapa en ny nyckel varje gång? Svar: Problem kommer upp! gör commit på det
 
 #### Argparse
 ## Det ska vara argparse som tar in fil i skripten krypterar/dekrypterar
 
-## 1. Krypera
+## 1. Krypera - CHECK
 ## 1a. Ange fil -> Bekräftelse
 ## 1a. Ange fil -> Fil redan kryperad?
 
-## 2. Dekryptera
+## 2. Dekryptera - CHECK
 ## 2a. Ange fil -> Bekräftelse
 ## 2a. Ange fil -> Fil redan kryperad? 
 
-## 3. Skapa nyckel -> Bekräftelse
+## 3. Skapa nyckel - CHECK 
+## 3a. Få Bekräftelse 
 
 
 #### FRÅGOR: Hur ange filnamn som ska de/krypteras? 
@@ -114,18 +118,27 @@ def decrypt_and_store_info():
             print(f"Innehåll i fil: testfil.py är dekrypterad - GREAT SUCCESS \n")
 
 
-#### Dags att bygga argparse :D
+#### Dags att bygga args :D
 
 parser.add_argument("-c", "--create_key", action="store_true", help="Skapa krypteringsnyckel")
+
 parser.add_argument("-e", "--encrypt_file", action="store_true", help="Filen krypteras")
+
 parser.add_argument("-d", "--decrypt_file", action="store_true", help="Filen dekrypteras")
 
-
-args = parser.parse_args()                                                      #### tsm argparse.ArgumentParser aktiverar argsparse I guess
+args = parser.parse_args()          #### tsm argparse.ArgumentParser aktiverar argsparse I guess
 
 if args.create_key:
+    print("generate_key_mode()- MODE AKTIVERAD\n")
     generate_key_mode()
+    print("Ny nyckel skapad - Programmet stängs")
+    
 elif args.encrypt_file:
+    print("encrypt_and_store_inf()- MODE AKTIVERAD\n")
     encrypt_and_store_info()
+    print("Krypterat - Programmet stängs")
+
 elif args.decrypt_file:
+    print("decrypt_and_store_info()- MODE AKTIVERAD\n")
     decrypt_and_store_info()
+    print("Dekrypterat - Programmet stängs")
