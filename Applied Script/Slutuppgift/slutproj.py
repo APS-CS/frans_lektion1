@@ -67,7 +67,7 @@ import os
 
 ##importera argparse
 import argparse
-parser = argparse.ArgumentParser(description="Krypteringsverktyg 5000", epilog="EPILOG TEXT, EPILOG TEXT, EPILOG TEXT")   
+parser = argparse.ArgumentParser(description="Krypteringsverktyg \n 5000", epilog="EPILOG TEXT, EPILOG TEXT, EPILOG TEXT")   
 
 ##importera Fernet
 from cryptography.fernet import Fernet
