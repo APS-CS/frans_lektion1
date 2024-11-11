@@ -58,17 +58,16 @@ def decrypt_and_store_info(file, key):
 # parser.add_argument("-d", "--decrypt_file", action="store_true", help="Kommando för att dekryptera fil")
 
 
-parser.add_argument("-ck", "--create_key", action="store_true", help="Kommando för att ska ny krypterinsnyckel")
+parser.add_argument("-c", "--create_key", metavar="Ny krypteringsnyckel", help="Skapa ny krypterinsnyckel")
 
-parser.add_argument("-f", "--file_to_modify", metavar="Fil att behandla", type=str, help="Kommando + fil att behandla") 
+parser.add_argument("-k", "--key_choice", metavar="Krypteringsnyckel", help="Nyckel att använda")
 
-# parser.add_argument("-ck", "--chosenkey", type="str", )
+parser.add_argument("-f", "--file_to_modify", metavar="Fil", type=str, help="Fil att behandla") 
 
-parser.add_argument("-a", "--crypmode", metavar="Välj kryptera/dekryptera", choices=["kryptera", "dekryptera"], help="Välj <kryptera> eller <dekryptera> för behandling av fil", type=str.lower)
+parser.add_argument("-m", "--crypmode", metavar="Välj funktion", choices=["kryptera", "dekryptera"], help="Välj <kryptera> eller <dekryptera> för behandling av fil", type=str.lower)
 
-parser.add_argument("-k", "--chose_key", help="Kommando + nyckel att använda")
 
-args = parser.parse_args()          #### tsm argparse.ArgumentParser aktiverar argsparse I guess
+args = parser.parse_args()
 
 
 
@@ -76,25 +75,25 @@ args = parser.parse_args()          #### tsm argparse.ArgumentParser aktiverar a
 
 if args.create_key:
     print("generate_key_mode()- MODE AKTIVERAD\n")                                  #### Bekräftelse
-    name_key = input("Skapa nyckel: ")
+    # name_key = input("Skapa nyckel: ")
     
-    if not os.path.exists(name_key):
-        generate_key_mode(name_key)
-
-        print(f"Nyckel {name_key} skapad - Programmet stängs")                               #### Bekräftelse
+    if not os.path.exists(args.create_key):
+        generate_key_mode(args.create_key)
+        print(f"Nyckel {args.create_key} skapad")                               #### Bekräftelse
     else:
-        print(f"Nyckel {name_key} finns redan - Programmet stängs")
+        print(f"Nyckel {args.create_key} finns redan")
 
-    
 
-if args.chose_key:
+if args.key_choice:
     print("chose_key_mode()- MODE AKTIVERAD\n")                                  #### Bekräftelse
-    if not os.path.exists(args.chose_key):
-        print(f"Fil {args.chose_key} finns ej")
+    if os.path.exists(args.key_choice):
+        key = args.key_choice
+        print(f"Nyckel finns: {args.key_choice}")
     else:
-        print("So far, so good")
-        key = args.chose_key
-    
+        print(f"Fil {args.key_choice} finns ej")
+        exit()
+        print("Programmet stängs")                                        #### Bekräftelse
+
 
 
 
@@ -103,14 +102,11 @@ if args.crypmode == "kryptera" and args.file_to_modify:
 
     if not os.path.exists(args.file_to_modify):
         print(f"Fil {args.file_to_modify} finns ej")
-        
     else:
         # key = input("Välj nyckel:")
         encrypt_and_store_info(args.file_to_modify, key)
-        print("Filen är krypterat - Programmet stängs")                                        #### Bekräftelse      
+        print("Filen är krypterat")                                        #### Bekräftelse      
     
-    print("Programmet stängs")                                        #### Bekräftelse
-
 
 
 if args.crypmode == "dekryptera"  and args.file_to_modify:
@@ -122,6 +118,4 @@ if args.crypmode == "dekryptera"  and args.file_to_modify:
     else:
         # key = input("Välj nyckel:")
         decrypt_and_store_info(args.file_to_modify, key)
-        print("Filen är dekrypterat - Programmet stängs")                                        #### Bekräftelse
-
-    print("Programmet stängs") 
+        print("Filen är dekrypterat")                                        #### Bekräftelse
