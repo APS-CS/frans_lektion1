@@ -53,15 +53,19 @@ def decrypt_and_store_info(file, key):
 #### Dags att bygga args :D
 #### lektion 2024-11-11 - allt ska göras via argsparse
 
-parser.add_argument("-c", "--create_key", action="store_true", help="Kommando för att ska ny krypterinsnyckel")
+# parser.add_argument("-e", "--encrypt_file", action="store_true", help="Kommando för att kryptera fil")
 
-parser.add_argument("-e", "--encrypt_file", action="store_true", help="Kommando för att kryptera fil")
+# parser.add_argument("-d", "--decrypt_file", action="store_true", help="Kommando för att dekryptera fil")
 
-parser.add_argument("-d", "--decrypt_file", action="store_true", help="Kommando för att dekryptera fil")
+
+parser.add_argument("-ck", "--create_key", action="store_true", help="Kommando för att ska ny krypterinsnyckel")
 
 parser.add_argument("-f", "--file_to_modify", metavar="Fil att behandla", type=str, help="Kommando för att välja fil att behandla") 
 
-parser.add_argument("-en", "--action", metavar="Välj att kryptera", type="str", )
+# parser.add_argument("-ck", "--chosenkey", type="str", )
+
+parser.add_argument("-a", "--crypmode", metavar="Välj kryptera/dekryptera", choices=["kryptera", "dekryptera"], help="Välj <kryptera> eller <dekryptera> för behandling av fil", type=str.lower)
+
 
 args = parser.parse_args()          #### tsm argparse.ArgumentParser aktiverar argsparse I guess
 
@@ -82,7 +86,7 @@ if args.create_key:
     
 
 
-if args.encrypt_file and args.file_to_modify:
+if args.crypmode == "kryptera" and args.file_to_modify:
     print("Encrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
 
     if not os.path.exists(args.file_to_modify):
@@ -98,7 +102,7 @@ if args.encrypt_file and args.file_to_modify:
 
 
 
-if args.decrypt_file and args.file_to_modify:
+if args.crypmode == "dekryptera"  and args.file_to_modify:
     print("Decrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
 
     if not os.path.exists(args.file_to_modify):
