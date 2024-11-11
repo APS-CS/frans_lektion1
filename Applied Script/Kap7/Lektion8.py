@@ -60,6 +60,56 @@
 
 import os
 
-cwd = os.getcwd()                       #### current working directory
-print(cwd)
+# os.chdir("c:\\")
 
+# cwd = os.getcwd()                       #### current working directory
+# print(cwd)
+
+# os.mkdir("test_folder")                   #### skapar katalog
+# os.rmdir("test_folder")                   #### tar bort katalog
+
+
+#### felhantering os
+
+# if os.path.exists("example.txt"):
+#     print("Filen existerar")
+#     os.remove("example.txt")                #### tar bort filer
+# else:
+#     print("Filen existerar inte")
+
+
+# file_info = os.stat("bild.png")                   #### kan få fett mkt info om filen
+# print(f"Filstorket: {file_info.st_size}")         #### exempel
+
+# os.system("dir")                                  #### var försiktig!
+
+
+
+# #### hitta bland olika OS
+
+# filepath = os.path.join("math_script","main.py")                     ####funktionalietet mellan olika os-system
+
+# print(filepath)
+
+# with open(filepath, "r") as file:                                   ##### nu kan den hitta bland olika os-system
+    # kod
+
+
+
+#### 
+
+# import platform
+
+# if os.name == "nt":
+#     print("Windows!")
+#     os.system("dir")
+# else:
+#     print("Unix!")
+#     os.system("ls")
+
+# print(f"Plattform: {platform.system()}")
+
+
+
+
+from pathlib import Path

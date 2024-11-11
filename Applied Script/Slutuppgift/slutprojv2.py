@@ -1,75 +1,8 @@
-################ Projekt Frans Schartaus ################
-
-## Skapa ett verktyg som kan:
-
-## Generera och spara en krypteringsnyckel. > SE ENCRPYT.PY
-
-## Kryptera en given fil med hjälp av en symmetrisk nyckel. 
-
-## Dekryptera en krypterad fil med rätt nyckel.
-
-## Använd cryptography-biblioteket (Fernet rekommenderas) 
-
-## Använd argparsebiblioteket för att ta argument
-
-## Krav:
-## Implementera ett skript som använder argparse för att hantera
-## kommandoradsalternativ och utför följande funktioner:
-
-## Generera en symmetrisk nyckel och spara den i en fil.
-
-## Kryptera en fil med en befintlig nyckel.
-
-## Dekryptera en krypterad fil och återställa originalet.
-
-################ Plan för uppgiften ################
-
-#### Fernet
-## skapa skript som gör krypteringsprocedur, ha samma fil som avkrypterar
-
-## skapa funktion för att skapar nyckel - CHECK
-## skapa funktion för att kryptera - CHECK
-## skapa funktion för att dekryptera - CHECK
-
-
-#### FRÅGOR och SVAR: vad händer med plaintext och enc fil? Ta vi bort? ersätter hela filen? är den redan krypterad? - Svar: Ja, du krypterar bytes och därmed innehåll, det är inte en åtkomst till fil du blockarar utan klar läsning av innehåll
-
-#### FRÅGOR och SVAR: Kan det bli dubbelkryp? - Ja! Inga problem om samma krypnyckel används, problem om man kopierar över med ny kryp men har inte var den gamla
-
-#### FRÅGOR: Hur göra om flera filer? Krypera med bara en nyckel? Skapa en ny nyckel varje gång? Svar: Problem kommer upp! gör commit på det
-
-#### Argparse
-## Det ska vara argparse som tar in fil i skripten krypterar/dekrypterar
-
-## 1. Krypera - CHECK
-## 1a. Ange fil -> Bekräftelse
-## 1a. Ange fil -> Fil redan kryperad?
-
-## 2. Dekryptera - CHECK
-## 2a. Ange fil -> Bekräftelse
-## 2a. Ange fil -> Fil redan kryperad? 
-
-## 3. Skapa nyckel - CHECK 
-## 3a. Få Bekräftelse 
-
-
-#### FRÅGOR: Hur ange filnamn som ska de/krypteras? 
-
-
-#### Om tid finns: 
-## skapa (i skripten) funktion för felmeddelande, tex om filen redan är krypterad eller om filen redan av avkrypterad
-## köra skripten och skapa ny nyckel
-
-
-################ Ain't nuttin but to do it!! ################
-## impertera os åtkomst
 import os
 
-##importera argparse
 import argparse
 parser = argparse.ArgumentParser(description="Krypteringsverktyg \n 5000", epilog="EPILOG TEXT, EPILOG TEXT, EPILOG TEXT")   
 
-##importera Fernet
 from cryptography.fernet import Fernet
 
 
@@ -118,14 +51,17 @@ def decrypt_and_store_info(file, key):
 
 
 #### Dags att bygga args :D
+#### lektion 2024-11-11 - allt ska göras via argsparse
 
-parser.add_argument("-c", "--create_key", action="store_true", help="Skapa krypteringsnyckel -- Steg 1 - Ange kommando. Steg 2- Skript körs. Steg 3 - Ange ny nyckelnamn. Steg 4 - Spara krypteringsnyckel.")
+parser.add_argument("-c", "--create_key", action="store_true", help="Kommando för att ska ny krypterinsnyckel")
 
-parser.add_argument("-e", "--encrypt_file", action="store_true", help="Kryptera vald fil -- Steg 1 - Ange kommando. Steg 2 - Ange fil. Steg 3 - Skript körs. Steg 4 - Ladda krypteringsnyckel. Steg 5 - Kryptera")
+parser.add_argument("-e", "--encrypt_file", action="store_true", help="Kommando för att kryptera fil")
 
-parser.add_argument("-d", "--decrypt_file", action="store_true", help="Dekryptera vald fil -- Steg 1 - Ange kommando. Steg 2 - Ange fil. Steg 3 - Skript körs. Steg 4 - Ladda krypteringsnyckel. Steg 5 - Dekryptera")
+parser.add_argument("-d", "--decrypt_file", action="store_true", help="Kommando för att dekryptera fil")
 
-parser.add_argument("-f", "--file_to_modify", metavar="--file_to_modify", type=str, help="Kommando före vald fil att behandla -- Steg 1 - Ange kommando -e eller -d. Steg 2 - Ange kommando: '-f'  och ange filnamn") 
+parser.add_argument("-f", "--file_to_modify", metavar="Fil att behandla", type=str, help="Kommando för att välja fil att behandla") 
+
+parser.add_argument("-en", "--action", metavar="Välj att kryptera", type="str", )
 
 args = parser.parse_args()          #### tsm argparse.ArgumentParser aktiverar argsparse I guess
 
