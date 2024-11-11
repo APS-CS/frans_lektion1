@@ -119,13 +119,13 @@ def decrypt_and_store_info(file, key):
 
 #### Dags att bygga args :D
 
-parser.add_argument("-c", "--create_key", action="store_true", help="Skapa krypteringsnyckel")
+parser.add_argument("-c", "--create_key", action="store_true", help="Skapa krypteringsnyckel -- Steg 1 - Ange kommando. Steg 2- Skript körs. Steg 3 - Ange ny nyckelnamn. Steg 4 - Spara krypteringsnyckel.")
 
-parser.add_argument("-e", "--encrypt_file", action="store_true", help="kommando att kryptera fil")
+parser.add_argument("-e", "--encrypt_file", action="store_true", help="Kryptera vald fil -- Steg 1 - Ange kommando. Steg 2 - Ange fil. Steg 3 - Skript körs. Steg 4 - Ladda krypteringsnyckel. Steg 5 - Kryptera")
 
-parser.add_argument("-d", "--decrypt_file", action="store_true", help="Filen dekrypteras")
+parser.add_argument("-d", "--decrypt_file", action="store_true", help="Dekryptera vald fil -- Steg 1 - Ange kommando. Steg 2 - Ange fil. Steg 3 - Skript körs. Steg 4 - Ladda krypteringsnyckel. Steg 5 - Dekryptera")
 
-parser.add_argument("-f", "--file_to_modify", type=str, help="Ange fil") 
+parser.add_argument("-f", "--file_to_modify", metavar="--file_to_modify", type=str, help="Kommando före vald fil att behandla -- Steg 1 - Ange kommando -e eller -d. Steg 2 - Ange kommando: '-f'  och ange filnamn") 
 
 args = parser.parse_args()          #### tsm argparse.ArgumentParser aktiverar argsparse I guess
 
@@ -174,11 +174,3 @@ if args.decrypt_file and args.file_to_modify:
         print("Filen är dekrypterat - Programmet stängs")                                        #### Bekräftelse
 
     print("Programmet stängs")
-
-
-
-
-# elif args.filename:
-#     filename_to_store = args.filename
-#     open(filename_to_store, "w")
-#     print(f"Fil {filename_to_store} skapad")
