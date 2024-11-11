@@ -2,8 +2,14 @@
 
 import argparse                         #### krav 1 - importera argparse
 
-parser = argparse.ArgumentParser()      #### krav 2 - använd 
-
+parser = argparse.ArgumentParser(
+    formatter_class=argparse.RawDescriptionHelpFormatter, 
+    description=textwrap.dedent('''\
+                                
+                                Blubb!!
+                                
+                                '''))      #### krav 2 - använd 
+parser.print_help()
     #### positional arguments! Dessa måste skrivas i för att gå vidare
 parser.add_argument("greeting", help="Hälsning visas")
 
