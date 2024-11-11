@@ -121,11 +121,11 @@ def decrypt_and_store_info(file, key):
 
 parser.add_argument("-c", "--create_key", action="store_true", help="Skapa krypteringsnyckel")
 
-parser.add_argument("-e", "--encrypt_file", action="store_true", help="Filen krypteras")
+parser.add_argument("-e", "--encrypt_file", action="store_true", help="kommando att kryptera fil")
 
 parser.add_argument("-d", "--decrypt_file", action="store_true", help="Filen dekrypteras")
 
-# parser.add_argument("filename", type=str, help="Ange fil") ### Hamnar som första argument
+parser.add_argument("-f", "--file_to_modify", type=str, help="Ange fil") 
 
 args = parser.parse_args()          #### tsm argparse.ArgumentParser aktiverar argsparse I guess
 
@@ -135,43 +135,45 @@ args = parser.parse_args()          #### tsm argparse.ArgumentParser aktiverar a
 
 if args.create_key:
     print("generate_key_mode()- MODE AKTIVERAD\n")                                  #### Bekräftelse
-    name_key = input("Välj nyckel: ")
+    name_key = input("Skapa nyckel: ")
+    
     if not os.path.exists(name_key):
         generate_key_mode(name_key)
-        print("Ny nyckel skapad - Programmet stängs")                               #### Bekräftelse
+
+        print(f"Nyckel {name_key} skapad - Programmet stängs")                               #### Bekräftelse
     else:
         print(f"Nyckel {name_key} finns redan - Programmet stängs")  
     
 
 
-elif args.encrypt_file:
-    print("encrypt_and_store_inf()- MODE AKTIVERAD\n")                              #### Bekräftelse
+if args.encrypt_file and args.file_to_modify:
+    print("Encrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
 
-    file = input("Välj fil: ")                                                      #### måste lägga in kontroll om filen finns eller ej
-    if os.path.exists(file):
-        print(f"Filen {file} hittad")                                               #### Bekräftelse
+    if not os.path.exists(args.file_to_modify):
+        print(f"Fil {args.file_to_modify} finns ej")
+        
     else:
-        print(f"Fil {file} ej hittad")                                              #### Bekräftelse
+        key = input("Välj nyckel:")
+        encrypt_and_store_info(args.file_to_modify, key)
+        print("Filen är krypterat - Programmet stängs")                                        #### Bekräftelse      
+    
+    print("Programmet stängs")                                        #### Bekräftelse
 
-    key = input("Välj nyckel:")
-    if os.path.exists(key):
-        print(f"Filen {key} hittad")                                                #### Bekräftelse        
-        encrypt_and_store_info(file, key)
+
+
+
+if args.decrypt_file and args.file_to_modify:
+    print("Decrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
+
+    if not os.path.exists(args.file_to_modify):
+        print(f"Fil {args.file_to_modify} finns ej")
+        
     else:
-        print(f"Nyckel {key} ej hittad")                                            #### Bekräftelse
+        key = input("Välj nyckel:")
+        decrypt_and_store_info(args.file_to_modify, key)
+        print("Filen är dekrypterat - Programmet stängs")                                        #### Bekräftelse
 
-    print("Krypterat - Programmet stängs")                                          #### Bekräftelse
-
-
-
-elif args.decrypt_file:
-    print("decrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse                            
-    file = input("Välj fil: ")                                                      #### Bekräftelse#### måste lägga in kontroll om filen finns eller ej
-
-    key = input("Välj nyckel:")
-    decrypt_and_store_info(file, key)
-    print("Dekrypterat - Programmet stängs")                                        #### Bekräftelse
-
+    print("Programmet stängs")
 
 
 

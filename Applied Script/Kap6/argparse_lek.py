@@ -13,6 +13,7 @@ parser.add_argument("-b", "--Blubb_blubb", help="Gör inget men vill ha värde e
 parser.add_argument("-c", "--Choices_2000", choices="yn", help="Välj Y eller N")
 parser.add_argument("-d", metavar="Hejsan!", help="d metavar")
 parser.add_argument("-f", "--file", help="filhantering")
+parser.add_argument("-g", metavar="CG", dest="com", help="Help Batman!" )
 
 
 
