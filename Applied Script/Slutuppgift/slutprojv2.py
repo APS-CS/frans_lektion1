@@ -1,7 +1,7 @@
 import os
 
 import argparse
-parser = argparse.ArgumentParser(description="Krypteringsverktyg 5000. exempel inmatning: -f [filnamn] [nyckel] -m VÄLJ [kryptera] ELLER [dekryptera].", epilog="EPILOG TEXT, EPILOG TEXT, EPILOG TEXT")   
+parser = argparse.ArgumentParser(description="Krypteringsverktyg 5000. exempel inmatning: -f [filnamn] [nyckel] -m VÄLJ [kryptera] ELLER [dekryptera].", epilog="Information i ovan description")   
 
 from cryptography.fernet import Fernet
 

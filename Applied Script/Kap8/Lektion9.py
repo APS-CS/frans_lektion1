@@ -3,7 +3,7 @@
 ### UUID kolla! https://www.uuidgenerator.net/
 
 ################ shutil ################
-# import shutil
+import shutil
 
 
 # #### Exempel ####
@@ -51,8 +51,17 @@ from pathlib import Path
 
 # print(p)
 
+# p = Path.cwd() 
 
-file_path = p / "test2"
-if file_path.suffix == ".txt":
-    print("Detta är en textfil")
+# file_path = p / "test2"
+# if file_path.suffix == ".txt":
+#     print("Detta är en textfil")
 
+# for file in p.glob("*"):
+#     if file.suffix in [".txt"]:
+#         print(f"hittade fil: {file}")
+#         shutil.copy(file, "backupen")
+
+
+######## regex ########
+    
