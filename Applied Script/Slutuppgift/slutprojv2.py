@@ -69,7 +69,7 @@ if args.create_key:
         print(f"Nyckel {args.create_key} finns redan")
 
 
-if args.files[1]:
+elif args.files[1]:
     print("chose_key_mode()- MODE AKTIVERAD\n")                                  #### Bekräftelse
     if os.path.exists(args.files[1]):
         key = args.files[1]
@@ -80,7 +80,7 @@ if args.files[1]:
         print("Programmet stängs")                                        #### Bekräftelse
 
 
-if args.crypmode == "kryptera" and args.files[0]:
+elif args.crypmode == "kryptera" and args.files[0]:
     print("Encrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
 
     if not os.path.exists(args.files[0]):
@@ -90,7 +90,7 @@ if args.crypmode == "kryptera" and args.files[0]:
         print("Filen är krypterat")                                        #### Bekräftelse      
 
 
-if args.crypmode == "dekryptera"  and args.files[0]:
+elif args.crypmode == "dekryptera"  and args.files[0]:
     print("Decrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
 
     if not os.path.exists(args.files[0]):
