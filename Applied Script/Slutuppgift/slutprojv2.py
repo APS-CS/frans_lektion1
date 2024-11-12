@@ -86,7 +86,7 @@ elif args.crypmode == "kryptera" and args.files[0]:
     if not os.path.exists(args.files[0]):
         print(f"Fil {args.files[0]} finns ej")
     else:
-        encrypt_and_store_info(args.files[0], key)
+        encrypt_and_store_info(args.files[0])
         print("Filen är krypterat")                                        #### Bekräftelse      
 
 
@@ -96,5 +96,5 @@ elif args.crypmode == "dekryptera"  and args.files[0]:
     if not os.path.exists(args.files[0]):
         print(f"Fil {args.files[0]} finns ej")
     else:
-        decrypt_and_store_info(args.files[0], key)
+        decrypt_and_store_info(args.files[0])
         print("Filen är dekrypterat")                                        #### Bekräftelse
