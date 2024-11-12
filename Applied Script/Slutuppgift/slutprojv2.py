@@ -80,7 +80,7 @@ elif args.files[1]:
         print("Programmet stängs")                                        #### Bekräftelse
 
 
-elif args.crypmode == "kryptera" and args.files[0]:
+elif args.files[0] and args.crypmode == "kryptera":
     print("Encrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
 
     if not os.path.exists(args.files[0]):
@@ -90,7 +90,7 @@ elif args.crypmode == "kryptera" and args.files[0]:
         print("Filen är krypterat")                                        #### Bekräftelse      
 
 
-elif args.crypmode == "dekryptera"  and args.files[0]:
+elif args.files[0] and args.crypmode == "dekryptera":
     print("Decrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
 
     if not os.path.exists(args.files[0]):
