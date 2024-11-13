@@ -59,9 +59,7 @@ def main():
 
 
 
-
 ####  if satser
-
     if args.create_key:
         print("generate_key_mode()- MODE AKTIVERAD\n")                                  #### Bekräftelse
 
@@ -71,17 +69,6 @@ def main():
         else:
             print(f"Nyckel {args.create_key} finns redan")
 
-# ### borde gå att ta bort eftersom fil koll redan görs:
-#     elif args.files[1]:
-#         print("chose_key_mode()- MODE AKTIVERAD\n")                                  #### Bekräftelse
-#         if os.path.exists(args.files[1]):
-#             key = args.files[1]
-#             print(f"Nyckel finns: {key}")
-#         else:
-#             print(f"Fil {args.files[1]} finns ej")
-#             exit()
-#             print("Programmet stängs")                                        #### Bekräftelse
-
 
     elif args.files and args.operation == "kryptera":
         print("Encrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
@@ -90,9 +77,9 @@ def main():
             print(f"Fil {args.files[0]} finns ej")
         if not os.path.exists(args.files[1]):
             print(f"Nyckelfil {args.files[1]} finns ej")
+
         else:
-            print(key)
-            encrypt_and_store_info(args.files[0],key)
+            encrypt_and_store_info(args.files[0], args.files[1])
             print("Filen är krypterat")                                        #### Bekräftelse      
 
 
@@ -103,18 +90,20 @@ def main():
             print(f"Fil {args.files[0]} finns ej")
         if not os.path.exists(args.files[1]):
             print(f"Nyckelfil {args.files[1]} finns ej")
+
         else:
-            decrypt_and_store_info(args.files[0])
+            decrypt_and_store_info(args.files[0], args.files[1])
             print("Filen är dekrypterat")                                        #### Bekräftelse
+
+
 
 #### felhantering
     elif args.files and not args.operation:
          print("Fel: Du behöver ange krypteringsläge '-o' och 'kryptera' eller 'dekryptera'") 
-         exit()
 
     elif args.operation and not args.files:
-        print("Fel: Ange '-f' och 'fil att behandla' och 'nyckelfil'") 
-        exit()      
+        print("Fel: Ange '-f' och 'fil att behandla' och 'nyckelfil'")    
+
 
 
 if __name__ == "__main__":
