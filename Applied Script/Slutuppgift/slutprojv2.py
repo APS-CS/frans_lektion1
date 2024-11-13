@@ -71,35 +71,9 @@ def main():
             print(f"Nyckel {args.create_key} finns redan")
 
 
-    # elif args.files and args.operation == "kryptera":
-    #     print("Encrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
-
-    #     if not os.path.exists(args.files[0]):
-    #         print(f"Fil {args.files[0]} finns ej")
-    #         return
-    #     if not os.path.exists(args.files[1]):
-    #         print(f"Nyckelfil {args.files[1]} finns ej")
-    #         return
-    #     else:
-    #         encrypt_and_store_info(args.files[0], args.files[1])
-    #         print("Filen är krypterat")                                        #### Bekräftelse      
-
-
-    # elif args.files and args.operation == "dekryptera":
-    #     print("Decrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
-
-    #     if not os.path.exists(args.files[0]):
-    #         print(f"Fil {args.files[0]} finns ej")
-    #         return
-    #     if not os.path.exists(args.files[1]):
-    #         print(f"Nyckelfil {args.files[1]} finns ej")
-    #         return
-    #     else:
-    #         decrypt_and_store_info(args.files[0], args.files[1])
-    #         print("Filen är dekrypterat")                                        #### Bekräftelse
-    ###test
-    elif args.files and args.operation == "kryptera":
-        print("Encrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
+#### check av fil + kryptering eller dekryptering
+    elif args.files and args.operation:
+        print("fil hantering- MODE AKTIVERAD\n")                             #### Bekräftelse
 
         if not os.path.exists(args.files[0]):
             print(f"Fil {args.files[0]} finns ej")
@@ -108,23 +82,15 @@ def main():
             print(f"Nyckelfil {args.files[1]} finns ej")
             return
         else:
-            encrypt_and_store_info(args.files[0], args.files[1])
-            print("Filen är krypterat")                                        #### Bekräftelse      
-
-
-    elif args.files and args.operation == "dekryptera":
-        print("Decrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
-
-        if not os.path.exists(args.files[0]):
-            print(f"Fil {args.files[0]} finns ej")
-            return
-        if not os.path.exists(args.files[1]):
-            print(f"Nyckelfil {args.files[1]} finns ej")
-            return
-        else:
-            decrypt_and_store_info(args.files[0], args.files[1])
-            print("Filen är dekrypterat")                                        #### Bekräftelse
-
+            print("Crypt MODE AKTIVERAD\n")                             #### Bekräftelse
+            if args.operation == "kryptera":
+                encrypt_and_store_info(args.files[0], args.files[1])
+                print("Filen är krypterat")                                        #### Bekräftelse
+                return
+            if args.operation == "dekryptera":
+                decrypt_and_store_info(args.files[0], args.files[1])
+                print("Filen är dekrypterat") 
+                return
 
 
 #### felhantering
