@@ -2,10 +2,30 @@ import os
 import argparse
 from cryptography.fernet import Fernet
 
-parser = argparse.ArgumentParser(description="""Krypteringsverktyg 5000. 
-exempel inmatning: -f [filnamn] [nyckel] -m VÄLJ [kryptera] ELLER [dekryptera].""", 
-                                 epilog="Information i ovan description", 
-                                 formatter_class=argparse.RawDescriptionHelpFormatter)   
+parser = argparse.ArgumentParser(description="""Krypteringsverktyg 5000
+Änvändning:
+                    py SCRIPT.py -f FILNAMN NYCKEL -m kryptera
+
+                                 
+Flaggor:
+-c  --create_key    Skapa en ny krypteringsnyckel och spara den som en ny fil.
+                                                                
+-f  --files         Ange både filen du vill kryptera/dekryptera och nyckefilen i den givna ordningen.
+                    Notera: Ange alltid filnamn först och sedan nyckelfil.
+                                             
+-o  --operation     Välj vilken funktion som ska användas.
+                    "kryptera" för att kryptera den valda filen med nyckelfilen.
+                    "dekryptera" för att dekryptera den valda filen med nyckelfilen.                      
+
+                                 
+Exempel på korrekta användningar:
+
+Skapa ny nyckel:    py slutprojv2.py -c ny_nyckel.key
+
+Kryptera en fil:    py slutprojv2.py -f testfil.txt test.key -o kryptera
+
+Dekryptera en fil:  py slutprojv2.py -f testfil.txt test.key -o dekryptera""", 
+epilog="Information finns ovan", formatter_class=argparse.RawDescriptionHelpFormatter)   
 
 
 #### funktion för att skapa nyckel
