@@ -52,20 +52,25 @@ def main():
 
 #### argument
     parser.add_argument("-c", "--create_key", metavar="Skapa ny nyckel", help="Skapa ny krypterinsnyckel")
-    parser.add_argument("-f", "--files", metavar="Välj FIL:      välj: NYCKEL", nargs=2, type=str, help="Ange fil att kryptera/dekryptera och nyckelfil") 
+    parser.add_argument("-f", "--files", metavar="Välj: FIL och välj: NYCKEL", nargs=2, type=str, help="Ange fil att kryptera/dekryptera och nyckelfil") 
     parser.add_argument("-o", "--operation", choices=["kryptera", "dekryptera"], help="Välj kryptering: kryptera eller dekryptera", type=str.lower)
 
     args = parser.parse_args()
-
-#### vidare felhantering
-
 
 
     #### If-satser
 
     key = None
 
-    if args.create_key:
+    if args.files and not args.operation:
+         print("Fel: Du behöver ange krypteringsläge '-o' och 'kryptera' eller 'dekryptera'") 
+         exit()
+
+    elif args.operation and not args.files:
+        print("Fel: Ange '-f' och 'fil att behandla' och 'nyckelfil'") 
+        exit()      
+    
+    elif args.create_key:
         print("generate_key_mode()- MODE AKTIVERAD\n")                                  #### Bekräftelse
 
         if not os.path.exists(args.create_key):
@@ -106,7 +111,7 @@ def main():
             decrypt_and_store_info(args.files[0])
             print("Filen är dekrypterat")                                        #### Bekräftelse
 
-    elif args.files[0] and not args.operation:
+    elif args.files and not args.operation:
          print("Fel: Du behöver ange kryptering eller dekryptering\n")  
 
 if __name__ == "__main__":
