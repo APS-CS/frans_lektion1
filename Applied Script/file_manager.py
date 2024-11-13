@@ -10,7 +10,7 @@ import argparse
 def main():
     parser = argparse.ArgumentParser(description="File manager")
 
-    parser.add_argument("-o", "--operation", choices=["list", "copy", "move"])
+    parser.add_argument("-o", "--operation", choices=["list", "copy", "move"], required=True, help="Helps operation to perform")
 
 
 
