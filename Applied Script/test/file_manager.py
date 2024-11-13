@@ -54,16 +54,6 @@ def main():
         for file in files_copied:
             print(file)       
 
-    elif args.operation == "move":
-        if not args.destination:
-            print("-d required to move files")
-            return
-        files_moved = move_files(args.directory, args.destination, args.filetype)
-        print(f"Files in directory {args.directory} moved to {args.destination} ")
-        for file in files_moved:
-            print(file)       
-
-
 
 
 if __name__ == "__main__":
