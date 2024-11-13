@@ -1,0 +1,6 @@
+2024-11-13 10:48:32.438993 - Operation: CopyDestination: C:\AppliedScript\Applied Script\test 
+Files affected: 
+file_manager.py 
+test.txt 
+test2.txt 
+

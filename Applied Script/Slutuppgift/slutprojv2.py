@@ -48,20 +48,22 @@ def decrypt_and_store_info(file, key):
             file_to_decrypt.write(cipher_content)
             print(f"Innehåll i fil: {file} är dekrypterad - GREAT SUCCESS \n")  #### Bekräftelse
 
+def main():
 
 #### argument
-parser.add_argument("-c", "--create_key", metavar="Skapa ny nyckel", help="Skapa ny krypterinsnyckel")
-parser.add_argument("-f", "--files", metavar="Välj fil och nyckel.", nargs=2, type=str, help="Välj: Fil att behandla och nyckel") 
-parser.add_argument("-m", "--crypmode", metavar="Välj funktion", choices=["kryptera", "dekryptera"], help="Välj: [kryptera] eller [dekryptera] för behandling av fil", type=str.lower)
+    parser.add_argument("-c", "--create_key", metavar="Skapa ny nyckel", help="Skapa ny krypterinsnyckel")
+    parser.add_argument("-f", "--files", metavar="Välj fil och nyckel.", nargs=2, type=str, help="Välj: Fil att behandla och nyckel") 
+    parser.add_argument("-o", "--operation", metavar="Välj funktion", choices=["kryptera", "dekryptera",], help="Välj: [kryptera] eller [dekryptera] för behandling av fil", type=str.lower)
 
-args = parser.parse_args()
+    args = parser.parse_args()
 
 #### vidare felhantering
-try:
 
 
 
     #### If-satser
+
+    key = None
 
     if args.create_key:
         print("generate_key_mode()- MODE AKTIVERAD\n")                                  #### Bekräftelse
@@ -84,7 +86,7 @@ try:
             print("Programmet stängs")                                        #### Bekräftelse
 
 
-    elif args.files[0] and args.crypmode == "kryptera":
+    elif args.files[0] and args.operation == "kryptera":
         print("Encrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
 
         if not os.path.exists(args.files[0]):
@@ -95,7 +97,7 @@ try:
             print("Filen är krypterat")                                        #### Bekräftelse      
 
 
-    elif args.files[0] and args.crypmode == "dekryptera":
+    elif args.files[0] and args.operation == "dekryptera":
         print("Decrypt_and_store_info()- MODE AKTIVERAD\n")                             #### Bekräftelse
 
         if not os.path.exists(args.files[0]):
@@ -104,5 +106,8 @@ try:
             decrypt_and_store_info(args.files[0])
             print("Filen är dekrypterat")                                        #### Bekräftelse
 
-except TypeError:
-    print("TypeError:")
+    elif args.files[0] and not args.operation:
+         print("Fel: Du behöver ange kryptering eller dekryptering\n")  
+
+if __name__ == "__main__":
+    main()
