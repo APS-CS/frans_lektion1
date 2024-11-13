@@ -2,7 +2,10 @@ import os
 import argparse
 from cryptography.fernet import Fernet
 
-parser = argparse.ArgumentParser(description="Krypteringsverktyg 5000. exempel inmatning: -f [filnamn] [nyckel] -m VÄLJ [kryptera] ELLER [dekryptera].", epilog="Information i ovan description")   
+parser = argparse.ArgumentParser(description="""Krypteringsverktyg 5000. 
+exempel inmatning: -f [filnamn] [nyckel] -m VÄLJ [kryptera] ELLER [dekryptera].""", 
+                                 epilog="Information i ovan description", 
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)   
 
 
 #### funktion för att skapa nyckel
