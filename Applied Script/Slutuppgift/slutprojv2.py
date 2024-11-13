@@ -52,8 +52,8 @@ def main():
 
 #### argument
     parser.add_argument("-c", "--create_key", metavar="Skapa ny nyckel", help="Skapa ny krypterinsnyckel")
-    parser.add_argument("-f", "--files", metavar="Välj fil och nyckel.", nargs=2, type=str, help="Välj: Fil att behandla och nyckel") 
-    parser.add_argument("-o", "--operation", metavar="Välj funktion", choices=["kryptera", "dekryptera",], help="Välj: [kryptera] eller [dekryptera] för behandling av fil", type=str.lower)
+    parser.add_argument("-f", "--files", metavar="Välj FIL:      välj: NYCKEL", nargs=2, type=str, help="Ange fil att kryptera/dekryptera och nyckelfil") 
+    parser.add_argument("-o", "--operation", choices=["kryptera", "dekryptera"], help="Välj kryptering: kryptera eller dekryptera", type=str.lower)
 
     args = parser.parse_args()
 
