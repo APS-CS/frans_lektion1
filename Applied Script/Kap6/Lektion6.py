@@ -12,7 +12,7 @@
 # ## colorama - färgad font i terminal
 # # kommando som man inte bara vet, utan får kolla upp
 
-# from colorama import init, Fore, Back, Style
+from colorama import init, Fore, Back, Style
 
 # init()
 # print(Fore.RED + "Den här texten är röd")
@@ -23,9 +23,9 @@
 
 # print(Fore.RED + "Warning: Error")
 
-# import pyfiglet
-# ascii_art = pyfiglet.figlet_format("Amperdamper")
-# print(Back.WHITE + Fore.RED + ascii_art + Style.RESET_ALL)
+import pyfiglet
+ascii_art = pyfiglet.figlet_format("Krypt-verktyg 5000")
+print(Back.WHITE + Fore.RED + ascii_art + Style.RESET_ALL)
 
 
 ######## OOP ######## - KAPITEL 6

@@ -1,8 +1,23 @@
 import os
 import argparse
 from cryptography.fernet import Fernet
+import pyfiglet
 
-parser = argparse.ArgumentParser(description="""Krypteringsverktyg 5000
+parser = argparse.ArgumentParser(description="""
+ _  __                 _                      _    _
+| |/ /_ __ _   _ _ __ | |_    __   _____ _ __| | _| |_ _   _  __ _                                                                                                                     
+| ' /| '__| | | | '_ \| __|___\ \ / / _ \ '__| |/ / __| | | |/ _` |                                                                                                                    
+| . \| |  | |_| | |_) | ||_____\ V /  __/ |  |   <| |_| |_| | (_| |                                                                                                                    
+|_|\_\_|   \__, | .__/ \__|     \_/ \___|_|  |_|\_ \__|\__, |\__, |                                                                                                                    
+           |___/|_|                                    |___/ |___/                                                                                                                     
+ ____   ___   ___   ___
+| ___| / _ \ / _ \ / _ \ 
+|___ \| | | | | | | | | |
+ ___) | |_| | |_| | |_| |
+|____/ \___/ \___/ \___/
+
+
+                                 
 Änvändning:
                     py SCRIPT.py -f FILNAMN NYCKEL -m kryptera
 
@@ -38,7 +53,7 @@ def generate_key_mode(name_key_in_gkm):
 #### funktion för att kryptera fil
 def encrypt_and_store_info(file, key):
     with open(key, "rb") as key_file:
-        key = key_file.read()                                                                               
+        key = key_file.read()
 
     cipher_suite = Fernet(key)
 
@@ -46,7 +61,8 @@ def encrypt_and_store_info(file, key):
         content = file_to_encrypt.read()
         cipher_content = cipher_suite.encrypt(content)
         
-        with open(file, "wb") as file_to_encrypt:
+        encrypted_file = file + ".enc"
+        with open(encrypted_file, "wb") as file_to_encrypt:
             file_to_encrypt.write(cipher_content)
 
 
@@ -62,7 +78,8 @@ def decrypt_and_store_info(file, key):
         content = file_to_decrypt.read()
         cipher_content = cipher_suite.decrypt(content)
         
-        with open(file, "wb") as file_to_decrypt:
+        decrypted_file = "dekrypterat_" + file.replace(".enc", "")
+        with open(decrypted_file, "wb") as file_to_decrypt:
             file_to_decrypt.write(cipher_content)
 
 
@@ -77,7 +94,7 @@ def main():
 
 
 ####  if satser
-    if len(os.sys.argv) == 1:           ####fik hjälp av Yaraslau med kod rad 79-83
+    if len(os.sys.argv) == 1:           ####fick hjälp av Yaraslau med kod rad 79-83
         parser.print_help()
         return
 
