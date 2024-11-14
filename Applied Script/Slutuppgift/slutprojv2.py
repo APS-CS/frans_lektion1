@@ -50,6 +50,7 @@ def encrypt_and_store_info(file, key):
             file_to_encrypt.write(cipher_content)
 
 
+
 #### funktion för att deryptera fil
 def decrypt_and_store_info(file, key):
     with open(key, "rb") as key_file:
@@ -76,7 +77,11 @@ def main():
 
 
 ####  if satser
-    if args.create_key:
+    if len(os.sys.argv) == 1:           ####fik hjälp av Yaraslau med kod rad 79-83
+        parser.print_help()
+        return
+
+    elif args.create_key:
 
         if not os.path.exists(args.create_key):
             generate_key_mode(args.create_key)
