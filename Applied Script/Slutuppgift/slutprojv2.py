@@ -1,9 +1,8 @@
 import os
 import argparse
 from cryptography.fernet import Fernet
-import pyfiglet
 
-parser = argparse.ArgumentParser(description="""
+parser = argparse.ArgumentParser(description=r"""
  _  __                 _                      _    _
 | |/ /_ __ _   _ _ __ | |_    __   _____ _ __| | _| |_ _   _  __ _                                                                                                                     
 | ' /| '__| | | | '_ \| __|___\ \ / / _ \ '__| |/ / __| | | |/ _` |                                                                                                                    
@@ -19,27 +18,27 @@ parser = argparse.ArgumentParser(description="""
 
                                  
 Änvändning:
-                    py SCRIPT.py -f FILNAMN NYCKEL -m kryptera
+                    py SCRIPT.py -f FILNAMN NYCKEL -e/d
 
                                  
 Flaggor:
 -c  --create_key    Skapa en ny krypteringsnyckel och spara den som en ny fil.
-                                                                
+                                                          
 -f  --files         Ange både filen du vill kryptera/dekryptera och nyckefilen i den givna ordningen.
                     Notera: Ange alltid filnamn först och sedan nyckelfil.
-                                             
--o  --operation     Välj vilken funktion som ska användas.
-                    "kryptera" för att kryptera den valda filen med nyckelfilen.
-                    "dekryptera" för att dekryptera den valda filen med nyckelfilen.                      
+                                 
+-e  --encrypt       Välj '-e' för att kryptera den valda filen med den valda nyckelfilen
+                                 
+-d  --decrypt       Välj '-d' för att dekryptera den valda filen med den valda nyckelfilen                    
 
                                  
 Exempel på korrekta användningar:
 
 Skapa ny nyckel:    py slutprojv2.py -c ny_nyckel.key
 
-Kryptera en fil:    py slutprojv2.py -f testfil.txt test.key -o kryptera
+Kryptera en fil:    py slutprojv2.py -f testfil.txt test.key -e
 
-Dekryptera en fil:  py slutprojv2.py -f testfil.txt test.key -o dekryptera""", 
+Dekryptera en fil:  py slutprojv2.py -f testfil.txt test.key -d""", 
 epilog="Information finns ovan", formatter_class=argparse.RawDescriptionHelpFormatter)   
 
 
@@ -87,8 +86,14 @@ def main():
 
 #### argument
     parser.add_argument("-c", "--create_key", metavar="Skapa ny nyckel", help="Skapa ny krypterinsnyckel")
+
     parser.add_argument("-f", "--files", metavar="Välj: FIL och välj: NYCKEL", nargs=2, type=str, help="Ange fil att kryptera/dekryptera och nyckelfil") 
-    parser.add_argument("-o", "--operation", choices=["kryptera", "dekryptera"], help="Välj kryptering: kryptera eller dekryptera", type=str.lower)
+
+    group = parser.add_mutually_exclusive_group()
+
+    group.add_argument("-e", "--encrypt", action="store_true", help="Välj för kryptering")
+
+    group.add_argument("-d", "--decrypt", action="store_true", help="Välj för kryptering")
 
     args = parser.parse_args()
 
@@ -108,30 +113,30 @@ def main():
 
 
 #### check av fil + kryptering eller dekryptering
-    elif args.files and args.operation:
-
+    elif args.files and args.decrypt or args.encrypt:
         if not os.path.exists(args.files[0]):
             print(f"Fil {args.files[0]} finns ej")
+            return
         if not os.path.exists(args.files[1]):
             print(f"Nyckelfil {args.files[1]} finns ej")
             return
+        
         else:
-
-            if args.operation == "kryptera":
+            if args.encrypt:
                 encrypt_and_store_info(args.files[0], args.files[1])
                 print(f"Filen {args.files[0]} är krypterat")
-                return
-            if args.operation == "dekryptera":
+                # return
+            elif args.decrypt:
                 decrypt_and_store_info(args.files[0], args.files[1])
                 print(f"Filen {args.files[0]} är dekrypterat") 
-                return
+            return
 
 
 #### felhantering
-    elif args.files and not args.operation:
-         print("Fel: Du behöver ange krypteringsläge '-o' och 'kryptera' eller 'dekryptera'") 
+    elif args.files and not args.encrypt or args.decrypt:
+         print("Fel: Du behöver ange krypteringsläge '-e' eller '-d'") 
 
-    elif args.operation and not args.files:
+    elif args.encrypt or args.decrypt and not args.files:
         print("Fel: Ange '-f' och 'fil att behandla' och 'nyckelfil'")    
 
 if __name__ == "__main__":
