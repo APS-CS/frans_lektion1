@@ -83,7 +83,9 @@ def main():
 
 #### argument
     parser.add_argument("-c", "--create_key", metavar="Skapa ny nyckel", help="Skapa ny krypterinsnyckel")
-    parser.add_argument("-f", "--files", metavar="Välj: FIL och välj: NYCKEL", nargs=2, type=str, help="Ange fil att kryptera/dekryptera och nyckelfil") 
+    parser.add_argument("-f", "--files", metavar="Välj: FIL", nargs=2, type=str, help="Ange fil att kryptera/dekryptera") 
+    parser.add_argument("-k", "--key", metavar="Välj: NYCKEL", nargs=2, type=str, help="Ange nyckelfil för kryptera/dekryptera fil") 
+
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument("-e", "--encrypt", action="store_true", help="Välj för kryptering")
@@ -103,8 +105,12 @@ def main():
         else:
             print(f"Nyckel {args.create_key} finns redan")
 
+#### check av nyckel
+
+
+
 #### check av fil + kryptering eller dekryptering
-    elif args.files and args.decrypt or args.encrypt:  
+    elif args.files and args.decrypt or args.encrypt:
         if not os.path.exists(args.files[0]):
             print(f"Fil {args.files[0]} finns ej")
         elif not os.path.exists(args.files[1]):
@@ -112,15 +118,12 @@ def main():
             return
         
         else:
-            try:
-                if args.encrypt:
-                    encrypt_and_store_info(args.files[0], args.files[1])
-                    print(f"Filen {args.files[0]} är krypterat")
-                elif args.decrypt:
-                    decrypt_and_store_info(args.files[0], args.files[1])
-                    print(f"Filen {args.files[0]} är dekrypterat")
-            except Exception as e:
-                    print(f"Ett fel har inträffat: 1. Filen kan redan vara dekrypterat 2. Filen eller nyckeln kan vara skadat.")
+            if args.encrypt:
+                encrypt_and_store_info(args.files[0], args.files[1])
+                print(f"Filen {args.files[0]} är krypterat")
+            elif args.decrypt:
+                decrypt_and_store_info(args.files[0], args.files[1])
+                print(f"Filen {args.files[0]} är dekrypterat") 
 
 #### mer felhantering
     elif args.files and not args.encrypt or args.decrypt:
