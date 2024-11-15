@@ -84,66 +84,67 @@ def decrypt_and_store_info(file, key):
 def main():
 
 #### argument
-    parser.add_argument("-c", "--create_key", metavar="Skapa ny nyckel", help="Skapa ny krypterinsnyckel")
-    parser.add_argument("-f", "--file", metavar="Välj: FIL ", type=str, help="Ange fil att kryptera/dekryptera") 
-    parser.add_argument("-k", "--key", metavar="Välj: NYCKEL ", type=str, help="Ange nyckelfil för kryptera/dekryptera fil") 
+    parser.add_argument("-c", "--create_key", metavar="Skapa ny nyckel", help="Skapa ny krypterinsnyckel.")
+    parser.add_argument("-f", "--file", metavar="Välj: FIL ", type=str, help="Ange fil att kryptera/dekryptera.") 
+    parser.add_argument("-k", "--key", metavar="Välj: NYCKEL ", type=str, help="Ange nyckelfil för kryptera/dekryptera fil.") 
 
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("-e", "--encrypt", action="store_true", help="Välj för kryptering")
-    group.add_argument("-d", "--decrypt", action="store_true", help="Välj för dekryptering")
+    group.add_argument("-e", "--encrypt", action="store_true", help="Välj för kryptering.")
+    group.add_argument("-d", "--decrypt", action="store_true", help="Välj för dekryptering.")
 
     args = parser.parse_args()
 
 ####  if satser
-    if len(os.sys.argv) == 1:           ####fick hjälp av Yaraslau med kod rad 79-83
+    if len(os.sys.argv) == 1:           ####fick hjälp av Yaraslau med kod rad 98-100
         parser.print_help()
+        return
 
     if args.create_key:
         if not os.path.exists(args.create_key):
             generate_key_mode(args.create_key)
-            print(f"Nyckel {args.create_key} skapad")
+            print(f"Nyckel {args.create_key} skapad.")
         else:
-            print(f"Nyckel {args.create_key} finns redan")
+            print(f"Nyckel {args.create_key} finns redan.")
 
 #### kontroll
     if (args.file and args.key) and not (args.encrypt or args.decrypt):
-        print("Fel: Du behöver ange krypteringsläge '-e' eller '-d'")
+        print("Fel: Du behöver ange krypteringsläge '-e' eller '-d'.")
         return
 
 #### check av fil
     if args.file and (args.decrypt or args.encrypt):
         if not os.path.exists(args.file):
-            print(f"Fil {args.file}finns ej")
+            print(f"Fil {args.file}finns ej.")
             return
         excisting_file = args.file
     else:
-        print("Fel: ingen fil angiven. Ange '-f' och fil")
+        print("Fel: ingen fil angiven. Ange '-f' och fil.")
         return
 
 #### check av nyckel
     if args.key and (args.decrypt or args.encrypt):
         if not os.path.exists(args.key):
-            print(f"Nyckelfil {args.key}finns ej")
+            print(f"Nyckelfil {args.key}finns ej.")
             return
         excisting_key = args.key
     else:
-        print("Fel: ingen nyckel angiven. Ange '-k' och nyckelfil")
+        print("Fel: ingen nyckel angiven. Ange '-k' och nyckelfil.")
         return
              
 #### Kryptering/dekryptering
     if args.encrypt:
         if excisting_file.endswith(".enc"):
-            print(f"Filen {excisting_file} är redan krypterat")
+            print(f"Filen {excisting_file} är redan krypterat.")
         else:
             encrypt_and_store_info(excisting_file, excisting_key)
-            print(f"Filen {excisting_file} är krypterat")
+            print(f"Filen {excisting_file} är krypterat.")
         
     if  args.decrypt:
         if not excisting_file.endswith(".enc"):
-            print(f"Filen {excisting_file} är redan dekrypterat")
+            print(f"Filen {excisting_file} är redan dekrypterat.")
         else:
             decrypt_and_store_info(excisting_file, excisting_key)
-            print(f"Filen {excisting_file} är dekrypterat")
+            print(f"Filen {excisting_file} är dekrypterat.")
 
 
 
