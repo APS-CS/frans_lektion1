@@ -107,7 +107,7 @@ def main():
     elif args.files and args.decrypt or args.encrypt:  
         if not os.path.exists(args.files[0]):
             print(f"Fil {args.files[0]} finns ej")
-        elif not os.path.exists(args.files[1]):
+        elif not os.path.exists(args.files[1]):     
             print(f"Nyckelfil {args.files[1]} finns ej")
             return
         
