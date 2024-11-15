@@ -96,7 +96,7 @@ def main():
     if len(os.sys.argv) == 1:           ####fick hjälp av Yaraslau med kod rad 79-83
         parser.print_help()
 
-    elif args.create_key:
+    if args.create_key:
 
         if not os.path.exists(args.create_key):
             generate_key_mode(args.create_key)
@@ -105,36 +105,38 @@ def main():
             print(f"Nyckel {args.create_key} finns redan")
 
 #### check av fil
-    elif args.files or args.files == None and args.decrypt or args.encrypt:
+    if args.files and (args.decrypt or args.encrypt):
         if not os.path.exists(args.files):
-            print(f"Fil {args.files}finns ej eller fil har inte angets")
+            print(f"Fil {args.files}finns ej")
             return
-        else:
-            print("kommer det hit fil?")
-            excisting_file = args.files
 
+        print("kommer det hit fil?")
+        excisting_file = args.files
 
-    elif args.files and not args.encrypt or args.decrypt:
-        print("Fel: Du behöver ange krypteringsläge '-e' eller '-d'")
+    else:
+        print("Fel: ingen nyckel angiven")
+        return
 
 
 #### check av nyckel
-    elif args.key or args.key == None and args.decrypt or args.encrypt:
+    if args.key and (args.decrypt or args.encrypt):
         if not os.path.exists(args.key):
-            print(f"Nyckelfil {args.key + " "}finns ej eller nyckelfil har inte angets")
+            print(f"Nyckelfil {args.key + " "}finns ej")
             return
-        else:
-            print("kommer det hit nyckel?")
-            excisting_key = args.key
+
+        print("kommer det hit nyckel?")
+        excisting_key = args.key
+
+    else:
+        print("Fel: ingen fil angiven'")
              
 
 #### Kryptering/dekryptering
-    elif args.encrypt:
-
+    if args.encrypt:
             encrypt_and_store_info(excisting_file, excisting_key)
             print(f"Filen {excisting_file} är krypterat")
 
-    elif args.decrypt:
+    if  args.decrypt:
         decrypt_and_store_info(excisting_file, excisting_key)
         print(f"Filen {excisting_file} är dekrypterat") 
 
